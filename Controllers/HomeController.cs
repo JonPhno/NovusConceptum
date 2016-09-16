@@ -22,7 +22,7 @@ namespace NovusConceptum.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Comment nous contacter?";
 
             return View();
         }
