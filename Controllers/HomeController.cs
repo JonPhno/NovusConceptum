@@ -15,7 +15,7 @@ namespace NovusConceptum.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Description du club NovusConceptum";
+            ViewData["Message"] = "Qui sommes nous?";
 
             return View();
         }
