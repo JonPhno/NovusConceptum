@@ -19,10 +19,19 @@ namespace NovusConceptum.Controllers
 
             return View();
         }
-
+        
         public IActionResult Contact()
         {
             ViewData["Message"] = "Comment nous contacter?";
+
+            return View();
+        }
+
+       
+
+        public IActionResult Membres()
+        {
+            ViewData["Message"] = "La liste de nos membres";
 
             return View();
         }

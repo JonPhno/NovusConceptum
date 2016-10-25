@@ -1,0 +1,71 @@
+@model IEnumerable<NovusConceptum.Models.ForumViewModels.ForumViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCréation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dernier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreMessages)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCréation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dernier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreMessages)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
