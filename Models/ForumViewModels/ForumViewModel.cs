@@ -16,8 +16,8 @@ namespace NovusConceptum.Models.ForumViewModels
         public string NombreMessages { get; set; }
     }
 
-    public static class Posts
-    {
+    //public static class Posts
+    //{
         
-    }
+    //}
 }

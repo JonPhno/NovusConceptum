@@ -8,8 +8,8 @@ using NovusConceptum.Data;
 namespace NovusConceptum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161012182511_TableForum")]
-    partial class TableForum
+    [Migration("20161028191657_AjoutPostsSujets")]
+    partial class AjoutPostsSujets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,7 +173,7 @@ namespace NovusConceptum.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("NovusConceptum.Models.ForumViewModels.Discussion", b =>
+            modelBuilder.Entity("NovusConceptum.Models.Post", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -184,9 +184,37 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<string>("Message");
 
+                    b.Property<int>("SujetID");
+
                     b.HasKey("ID");
 
-                    b.ToTable("Dicussions");
+                    b.HasIndex("SujetID");
+
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("NovusConceptum.Models.Sujet", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Auteur");
+
+                    b.Property<DateTime>("DateCréation");
+
+                    b.Property<DateTime>("DateModifier");
+
+                    b.Property<string>("Dernier");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("NombreMessages");
+
+                    b.Property<string>("Titre");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Sujets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -223,6 +251,14 @@ namespace NovusConceptum.Data.Migrations
                     b.HasOne("NovusConceptum.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NovusConceptum.Models.Post", b =>
+                {
+                    b.HasOne("NovusConceptum.Models.Sujet", "Suj")
+                        .WithMany("Posts")
+                        .HasForeignKey("SujetID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

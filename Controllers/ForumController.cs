@@ -4,14 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NovusConceptum.Data;
+using NovusConceptum.Models;
+using NovusConceptum.Models.ForumViewModels;
+
 namespace NovusConceptum.Controllers
 {
     public class ForumController : Controller
     {
+        private ApplicationDbContext _context = null;
+
         // GET: Forum
         public ActionResult Index()
         {
-           // ViewData["Message"] = "Notre forum de discussion";
+            // ViewData["Message"] = "Notre forum de discussion";
+            List<ForumViewModel> liste_fm = new List<ForumViewModel>();
+
+            //var terrains = _context.
 
             return View();
         }

@@ -11,7 +11,12 @@ namespace NovusConceptum.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Discussions> Dicussions { get; set; }
+        public DbSet<Sujet> Sujets { get; set; }
+        public DbSet<Post> Posts { get; set; }
+
+
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

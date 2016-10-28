@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NovusConceptum.Models.ForumViewModels
+namespace NovusConceptum.Models
 {
-    public class Discussions
+    public class Sujet
     {
         [Key]
         public int ID { get; set; }
@@ -17,19 +17,18 @@ namespace NovusConceptum.Models.ForumViewModels
         public string Dernier { get; set; }
         public DateTime DateModifier { get; set; }
         public string NombreMessages { get; set; }
-        public List<Post> Postsss { get; set; }
-        
-
+        public List<Post> Posts { get; set; }
 
     }
 
-    public class Postsss
+    public class Post
     {
-
+        public int ID { get; set; }
         public string Auteur { get; set; }
         //public image MyProperty { get; set; }
         public DateTime Date { get; set; }
         public string Message { get; set; }
+        public int SujetID { get; set; }
+        public Sujet Suj { get; set; }
     }
-
 }
