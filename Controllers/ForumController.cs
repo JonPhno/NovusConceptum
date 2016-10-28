@@ -7,12 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using NovusConceptum.Data;
 using NovusConceptum.Models;
 using NovusConceptum.Models.ForumViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace NovusConceptum.Controllers
 {
     public class ForumController : Controller
     {
         private ApplicationDbContext _context = null;
+        public ForumController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: Forum
         public ActionResult Index()
@@ -20,15 +25,24 @@ namespace NovusConceptum.Controllers
             // ViewData["Message"] = "Notre forum de discussion";
             List<ForumViewModel> liste_fm = new List<ForumViewModel>();
 
-            //var terrains = _context.
+            var sujets = _context.Sujets.Include(p => p.Posts);
 
-            return View();
+           foreach (Sujet s in sujets)
+            {
+                liste_fm.Add(new ForumViewModel(s));
+            }
+
+            return View(liste_fm);
         }
 
         // GET: Forum/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ForumViewModel forumVM = new ForumViewModel(_context.Sujets
+                .Include(s => s.Posts)
+                .SingleOrDefault(f => f.ID ==id));
+
+            return View(forumVM);
         }
 
         // GET: Forum/Create
