@@ -17,7 +17,10 @@ namespace NovusConceptum.Models.ForumViewModels
         public string NombreMessages { get; set; }
         public List<Post> Posts { get; set; }
 
+        public ForumViewModel()
+        {
 
+        }
 
         public ForumViewModel(Sujet sujet)
         {

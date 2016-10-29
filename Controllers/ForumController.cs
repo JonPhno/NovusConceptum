@@ -71,17 +71,21 @@ namespace NovusConceptum.Controllers
         // GET: Forum/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
+            return View(ForumVM);
         }
 
         // POST: Forum/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(ForumViewModel forumModel)
         {
             try
             {
                 // TODO: Add update logic here
+                Sujet sujet = _context.Sujets.SingleOrDefault(s => s.ID == forumModel.ID);
+                TryUpdateModelAsync(sujet);
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -94,7 +98,8 @@ namespace NovusConceptum.Controllers
         // GET: Forum/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
+            return View(ForumVM);
         }
 
         // POST: Forum/Delete/5
@@ -105,8 +110,64 @@ namespace NovusConceptum.Controllers
             try
             {
                 // TODO: Add delete logic here
+                _context.Sujets.Remove(_context.Sujets.SingleOrDefault(s => s.ID == id));
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // actions reliés aux posts
+
+        // GET: Forum/Edit/5
+        public ActionResult EditPost(int id)
+        {
+            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
+            return View(ForumVM);
+        }
+
+        // POST: Forum/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost(ForumViewModel forumModel)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                Sujet sujet = _context.Sujets.SingleOrDefault(s => s.ID == forumModel.ID);
+                TryUpdateModelAsync(sujet);
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Forum/Delete/5
+        public ActionResult DeletePost(int id)
+        {
+            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
+            return View(ForumVM);
+        }
+
+        // POST: Forum/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id, IFormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                int sujetId = _context.Posts.SingleOrDefault(p => p.ID == id).SujetID;
+                _context.Posts.Remove(_context.Posts.SingleOrDefault(p => p.ID == id));
+                _context.SaveChanges();
+                return RedirectToAction(Details(sujetId).ToString());
             }
             catch
             {
