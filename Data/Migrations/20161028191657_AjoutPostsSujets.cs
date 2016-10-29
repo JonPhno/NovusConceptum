@@ -9,8 +9,7 @@ namespace NovusConceptum.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Dicussions");
+           
 
             migrationBuilder.CreateTable(
                 name: "Sujets",

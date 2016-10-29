@@ -1,5 +1,5 @@
---temp-output:C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\obj\Debug\netcoreapp1.0\
---out:C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\bin\Debug\netcoreapp1.0\Novus.dll
+--temp-output:A:\William\Desktop\Code git genre\Web\Novus\obj\Debug\netcoreapp1.0\
+--out:A:\William\Desktop\Code git genre\Web\Novus\bin\Debug\netcoreapp1.0\Novus.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -229,40 +229,40 @@
 --reference:C:\Users\William\.nuget\packages\System.Threading.Timer\4.0.1\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\William\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\William\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\obj\Debug\netcoreapp1.0\Novusdotnet-compile.deps.json",Novus.deps.json
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Program.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Startup.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Controllers\AccountController.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Controllers\ForumController.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Controllers\HomeController.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Controllers\ManageController.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\ApplicationDbContext.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\Migrations\00000000000000_CreateIdentitySchema.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.Designer.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Data\Migrations\ApplicationDbContextModelSnapshot.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ApplicationUser.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AspNetUsersInfoSup.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\Sujets.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\ForgotPasswordViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\LoginViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\RegisterViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\ResetPasswordViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\SendCodeViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\AccountViewModels\VerifyCodeViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ForumViewModels\Discussion.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ForumViewModels\ForumViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\AddPhoneNumberViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\ChangePasswordViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\FactorViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\IndexViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\ManageLoginsViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\RemoveLoginViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\SetPasswordViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Services\IEmailSender.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Services\ISmsSender.cs
-C:\Users\William\Dropbox\1.420_GEC(Web)\Travaux\Novus\Services\MessageServices.cs
+--resource:"A:\William\Desktop\Code git genre\Web\Novus\obj\Debug\netcoreapp1.0\Novusdotnet-compile.deps.json",Novus.deps.json
+A:\William\Desktop\Code git genre\Web\Novus\Program.cs
+A:\William\Desktop\Code git genre\Web\Novus\Startup.cs
+A:\William\Desktop\Code git genre\Web\Novus\Controllers\AccountController.cs
+A:\William\Desktop\Code git genre\Web\Novus\Controllers\ForumController.cs
+A:\William\Desktop\Code git genre\Web\Novus\Controllers\HomeController.cs
+A:\William\Desktop\Code git genre\Web\Novus\Controllers\ManageController.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\ApplicationDbContext.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\00000000000000_CreateIdentitySchema.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.Designer.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\ApplicationDbContextModelSnapshot.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ApplicationUser.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AspNetUsersInfoSup.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\Sujets.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\ForgotPasswordViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\LoginViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\RegisterViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\ResetPasswordViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\SendCodeViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\VerifyCodeViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ForumViewModels\Discussion.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ForumViewModels\ForumViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\AddPhoneNumberViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\ChangePasswordViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\FactorViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\IndexViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\ManageLoginsViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\RemoveLoginViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\SetPasswordViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Services\IEmailSender.cs
+A:\William\Desktop\Code git genre\Web\Novus\Services\ISmsSender.cs
+A:\William\Desktop\Code git genre\Web\Novus\Services\MessageServices.cs
