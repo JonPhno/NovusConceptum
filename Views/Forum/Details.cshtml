@@ -1,7 +1,7 @@
 @model NovusConceptum.Models.ForumViewModels.ForumViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Titre;
 }
 
 <h2>@Model.Titre</h2>
@@ -10,23 +10,24 @@
     <h4>@Model.Description</h4>
     <hr />
 
-    @Html.ActionLink("Répondre", "CreatePost", new { id = p.ID }) @:|
+    @Html.ActionLink("Répondre", "CreatePost", new { id = Model.ID })
 
     <table>
         <thead>
             <tr>
-                <th>
-                    Auteur |
+                <th style="width:200px">
+                    | Auteur
                 </th>
-                <th>
-                    Messages |
+                <th style="width:650px">
+                    | Messages
                 </th>
-                <th>
-                    Date |
-                </th>
-                <th>
-                    Actions |
-                </th>
+                @if (true)//admin
+                {
+                    <th>
+                        | Actions
+                    </th>
+                }
+                
             </tr>
         </thead>
         <tbody>
@@ -34,15 +35,14 @@
             {
                 @foreach (Post p in Model.Posts)
                 {
+                    <hr />
                     <tr>
                         <td>
-                            @p.Auteur
+                            @p.Auteur<br/>
+                            @p.Date
                         </td>
                         <td>
                             @p.Message
-                        </td>
-                        <td>
-                            @p.Date
                         </td>
                         <td>
                             @if (true)//si admin genre
@@ -53,12 +53,13 @@
                         </td>
                         
                     </tr>
+                    
                 }
             }
         </tbody>
     </table>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID}) |
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.ID}) |
     <a asp-action="Index">Retour aux sujets</a>
 </div>
