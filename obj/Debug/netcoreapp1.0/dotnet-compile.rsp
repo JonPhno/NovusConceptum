@@ -241,6 +241,10 @@ A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\00000000000000_Creat
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161028191657_AjoutPostsSujets.Designer.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030181438_AjustProp.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030181438_AjustProp.Designer.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030183559_AjustProp2.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030183559_AjustProp2.Designer.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ApplicationUser.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\AspNetUsersInfoSup.cs
@@ -254,6 +258,7 @@ A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\SendCodeVie
 A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\VerifyCodeViewModel.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ForumViewModels\Discussion.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ForumViewModels\ForumViewModel.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\ForumViewModels\PostViewModel.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\AddPhoneNumberViewModel.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\ChangePasswordViewModel.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ManageViewModels\ConfigureTwoFactorViewModel.cs

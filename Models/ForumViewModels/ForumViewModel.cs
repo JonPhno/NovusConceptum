@@ -14,7 +14,7 @@ namespace NovusConceptum.Models.ForumViewModels
         public DateTime DateCréation { get; set; }
         public string Dernier { get; set; }
         public DateTime DateModifier { get; set; }
-        public string NombreMessages { get; set; }
+        public int NombreMessages { get; set; }
         public List<Post> Posts { get; set; }
 
         public ForumViewModel()
@@ -28,7 +28,7 @@ namespace NovusConceptum.Models.ForumViewModels
             Titre = sujet.Titre;
             Description = sujet.Description;
             Auteur = sujet.Auteur;
-            DateCréation = sujet.DateCréation;
+            DateCréation = sujet.DateCreation;
             Dernier = sujet.Dernier;
             DateModifier = sujet.DateModifier;
             NombreMessages = sujet.NombreMessages;

@@ -13,10 +13,10 @@ namespace NovusConceptum.Models
         public string Titre { get; set; }
         public string Description { get; set; }
         public string Auteur { get; set; }
-        public DateTime DateCréation { get; set; }
+        public DateTime DateCreation { get; set; }
         public string Dernier { get; set; }
         public DateTime DateModifier { get; set; }
-        public string NombreMessages { get; set; }
+        public int NombreMessages { get; set; }
         public List<Post> Posts { get; set; }
 
     }

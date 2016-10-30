@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NovusConceptum.Data;
 using NovusConceptum.Models;
 using NovusConceptum.Models.ForumViewModels;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace NovusConceptum.Controllers
 {
@@ -59,8 +59,15 @@ namespace NovusConceptum.Controllers
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Sujet sujet = new Sujet();
+                TryUpdateModelAsync(sujet);
+              sujet.DateCreation = DateTime.Now;
+                sujet.DateModifier = DateTime.Now;
+                sujet.NombreMessages = 0;
+                sujet.Auteur = User.Identity.Name;
+                _context.Sujets.Add(sujet);
+                _context.SaveChanges();
+                return RedirectToAction("/CreatePost/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre && s.Posts.Count == 0).ID);
             }
             catch
             {
@@ -85,6 +92,7 @@ namespace NovusConceptum.Controllers
                 // TODO: Add update logic here
                 Sujet sujet = _context.Sujets.SingleOrDefault(s => s.ID == forumModel.ID);
                 TryUpdateModelAsync(sujet);
+                sujet.NombreMessages = sujet.Posts.Count;
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -173,6 +181,41 @@ namespace NovusConceptum.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult CreatePost()
+        {
+            return View();
+        }
+
+        // POST: Forum/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePost(IFormCollection collection)
+        {
+          //  try
+         //   {
+                // TODO: Add insert logic here
+                Post post = new Post();
+                TryUpdateModelAsync(post);
+                //sujet.DateCréation = DateTime.Now;
+                Sujet sujet = _context.Sujets.LastOrDefault();
+                sujet.DateModifier = DateTime.Now;
+                post.SujetID = sujet.ID;
+                post.Auteur = User.Identity.Name;
+                sujet.NombreMessages++;
+                post.Date = DateTime.Now;
+                sujet.Dernier = User.Identity.Name;
+                post.ID = 0;
+
+                _context.Posts.Add(post);
+                _context.SaveChanges();
+                return RedirectToAction("/Details/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre).ID);
+            //}
+         //   catch
+           // {
+          //      return View();
+          //  }
         }
     }
 }

@@ -199,7 +199,7 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<string>("Auteur");
 
-                    b.Property<DateTime>("DateCréation");
+                    b.Property<DateTime>("DateCreation");
 
                     b.Property<DateTime>("DateModifier");
 
@@ -207,7 +207,7 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("NombreMessages");
+                    b.Property<int>("NombreMessages");
 
                     b.Property<string>("Titre");
 
