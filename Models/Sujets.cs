@@ -18,6 +18,8 @@ namespace NovusConceptum.Models
         public DateTime DateModifier { get; set; }
         public int NombreMessages { get; set; }
         public List<Post> Posts { get; set; }
+        [Required]
+        public string PremierMessage { get; set; }
 
     }
 

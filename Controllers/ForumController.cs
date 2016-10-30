@@ -63,11 +63,21 @@ namespace NovusConceptum.Controllers
                 TryUpdateModelAsync(sujet);
               sujet.DateCreation = DateTime.Now;
                 sujet.DateModifier = DateTime.Now;
-                sujet.NombreMessages = 0;
+                sujet.NombreMessages = 1;
                 sujet.Auteur = User.Identity.Name;
+                sujet.Dernier = User.Identity.Name;
+                Post post = new Post()
+                {
+                    Auteur = User.Identity.Name,
+                    Date = DateTime.Now,
+                    Message = sujet.PremierMessage,
+                    SujetID = sujet.ID,
+                    Suj = sujet
+                };
                 _context.Sujets.Add(sujet);
+                _context.Posts.Add(post);
                 _context.SaveChanges();
-                return RedirectToAction("/CreatePost/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre && s.Posts.Count == 0).ID);
+                return RedirectToAction("/Details/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre).ID);
             }
             catch
             {
@@ -92,7 +102,14 @@ namespace NovusConceptum.Controllers
                 // TODO: Add update logic here
                 Sujet sujet = _context.Sujets.SingleOrDefault(s => s.ID == forumModel.ID);
                 TryUpdateModelAsync(sujet);
-                sujet.NombreMessages = sujet.Posts.Count;
+                if (sujet.Posts != null)
+                {
+                    sujet.NombreMessages = sujet.Posts.Count;
+                }
+                else
+                {
+                    sujet.NombreMessages = 0;
+                }
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -133,23 +150,23 @@ namespace NovusConceptum.Controllers
         // GET: Forum/Edit/5
         public ActionResult EditPost(int id)
         {
-            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
-            return View(ForumVM);
+            PostViewModel PostVM = new PostViewModel(_context.Posts.SingleOrDefault(s => s.ID == id));
+            return View(PostVM);
         }
 
         // POST: Forum/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost(ForumViewModel forumModel)
+        public ActionResult EditPost(PostViewModel postModel)
         {
             try
             {
                 // TODO: Add update logic here
-                Sujet sujet = _context.Sujets.SingleOrDefault(s => s.ID == forumModel.ID);
-                TryUpdateModelAsync(sujet);
+                Post post = _context.Posts.SingleOrDefault(s => s.ID == postModel.ID);
+                TryUpdateModelAsync(post);
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("/Details/" + post.SujetID);
             }
             catch
             {
@@ -160,8 +177,8 @@ namespace NovusConceptum.Controllers
         // GET: Forum/Delete/5
         public ActionResult DeletePost(int id)
         {
-            ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
-            return View(ForumVM);
+            PostViewModel PostVM = new PostViewModel(_context.Posts.SingleOrDefault(s => s.ID == id));
+            return View(PostVM);
         }
 
         // POST: Forum/Delete/5
@@ -175,7 +192,7 @@ namespace NovusConceptum.Controllers
                 int sujetId = _context.Posts.SingleOrDefault(p => p.ID == id).SujetID;
                 _context.Posts.Remove(_context.Posts.SingleOrDefault(p => p.ID == id));
                 _context.SaveChanges();
-                return RedirectToAction(Details(sujetId).ToString());
+                return RedirectToAction("/Details/" + sujetId);
             }
             catch
             {
@@ -183,9 +200,11 @@ namespace NovusConceptum.Controllers
             }
         }
 
-        public ActionResult CreatePost()
+        public ActionResult CreatePost(int id)
         {
-            return View();
+            PostViewModel PostVM = new PostViewModel();
+            PostVM.SujetID = id;
+            return View(PostVM);
         }
 
         // POST: Forum/Create
@@ -193,15 +212,15 @@ namespace NovusConceptum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(IFormCollection collection)
         {
-          //  try
-         //   {
+            try
+           {
                 // TODO: Add insert logic here
                 Post post = new Post();
                 TryUpdateModelAsync(post);
-                //sujet.DateCréation = DateTime.Now;
-                Sujet sujet = _context.Sujets.LastOrDefault();
+                post.Date = DateTime.Now;
+                Sujet sujet = _context.Sujets.SingleOrDefault(s=> s.ID == post.SujetID);
                 sujet.DateModifier = DateTime.Now;
-                post.SujetID = sujet.ID;
+                //post.SujetID = sujet.ID;
                 post.Auteur = User.Identity.Name;
                 sujet.NombreMessages++;
                 post.Date = DateTime.Now;
@@ -211,11 +230,11 @@ namespace NovusConceptum.Controllers
                 _context.Posts.Add(post);
                 _context.SaveChanges();
                 return RedirectToAction("/Details/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre).ID);
-            //}
-         //   catch
-           // {
-          //      return View();
-          //  }
+           }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

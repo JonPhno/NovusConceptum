@@ -209,6 +209,9 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<int>("NombreMessages");
 
+                    b.Property<string>("PremierMessage")
+                        .IsRequired();
+
                     b.Property<string>("Titre");
 
                     b.HasKey("ID");

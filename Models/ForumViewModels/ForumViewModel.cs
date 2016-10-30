@@ -16,6 +16,7 @@ namespace NovusConceptum.Models.ForumViewModels
         public DateTime DateModifier { get; set; }
         public int NombreMessages { get; set; }
         public List<Post> Posts { get; set; }
+        public string  PremierMessage { get; set; }
 
         public ForumViewModel()
         {
@@ -36,6 +37,7 @@ namespace NovusConceptum.Models.ForumViewModels
             {
                 Posts = sujet.Posts;
             }
+            PremierMessage = sujet.PremierMessage;
         }
     }
 
