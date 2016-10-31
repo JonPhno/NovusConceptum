@@ -1,0 +1,63 @@
+@model NovusConceptum.Models.ForumViewModels.PostViewModel
+
+@{
+    ViewData["Title"] = "CreatePost";
+}
+
+<h2>CreatePost</h2>
+
+<form asp-action="CreatePost">
+    <div class="form-horizontal">
+        <h4>PostViewModel</h4>
+        <hr />
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger" />
+            </div>
+        </div>*@
+        @*<div class="form-group">
+            <label asp-for="Auteur" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Auteur" class="form-control" />
+                <span asp-validation-for="Auteur" class="text-danger" />
+            </div>
+        </div>*@
+        @*<div class="form-group">
+            <label asp-for="Date" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="Message" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SujetID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SujetID" class="form-control" />
+                <span asp-validation-for="SujetID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" >Retour au sujet</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

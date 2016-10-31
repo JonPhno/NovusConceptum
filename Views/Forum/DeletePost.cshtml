@@ -1,0 +1,52 @@
+@model NovusConceptum.Models.ForumViewModels.PostViewModel
+
+@{
+    ViewData["Title"] = "DeletePost";
+}
+
+<h2>DeletePost</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PostViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Auteur)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SujetID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SujetID)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeletePost">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
