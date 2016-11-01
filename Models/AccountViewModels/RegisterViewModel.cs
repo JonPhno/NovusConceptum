@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -27,5 +28,18 @@ namespace NovusConceptum.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string ImageType { get; set; }
+        public string ImageNom { get; set; }
+        [Display(Name = "Image")]
+        public byte[] ImageData { get; set; }
+        // pour vue edit
+        public IFormFile Fichier { get; set; }
+
+        public RegisterViewModel()
+        {
+
+        }
+
     }
 }

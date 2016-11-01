@@ -17,5 +17,9 @@ namespace NovusConceptum.Models.ManageViewModels
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public string ImageType { get; set; }
+        public string ImageNom { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }

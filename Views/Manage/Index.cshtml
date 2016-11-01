@@ -67,5 +67,18 @@
                     </form>
                 }*@
         </dd>
+        <dt>
+            Image:
+        </dt>
+        <dd>
+            @if (Model.ImageData != null)
+            {
+                <img class="image_terrain" src="data:@Model.ImageType;base64,@Convert.ToBase64String(Model.ImageData)" alt="@Model.ImageNom" />
+            }
+            else
+            {
+                <img  src="~/images/no-image.png" alt="pas d'image" />
+            }
+        </dd>
     </dl>
 </div>

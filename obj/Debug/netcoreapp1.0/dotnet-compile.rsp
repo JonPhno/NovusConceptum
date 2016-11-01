@@ -249,9 +249,11 @@ A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030185626_Ajust
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030185626_AjustProp3.Designer.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030191848_AjustProp4.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161030191848_AjustProp4.Designer.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161101000410_ajoutImageInfoSupp.cs
+A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\20161101000410_ajoutImageInfoSupp.Designer.cs
 A:\William\Desktop\Code git genre\Web\Novus\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\ApplicationUser.cs
-A:\William\Desktop\Code git genre\Web\Novus\Models\AspNetUsersInfoSup.cs
+A:\William\Desktop\Code git genre\Web\Novus\Models\AspNetUserInfoSup.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\Sujets.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs
 A:\William\Desktop\Code git genre\Web\Novus\Models\AccountViewModels\ForgotPasswordViewModel.cs

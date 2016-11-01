@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using NovusConceptum.Models;
 using NovusConceptum.Models.AccountViewModels;
 using NovusConceptum.Services;
+using NovusConceptum.Data;
 
 namespace NovusConceptum.Controllers
 {
@@ -22,19 +23,22 @@ namespace NovusConceptum.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext _context = null;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = context;
         }
 
         //
@@ -109,6 +113,27 @@ namespace NovusConceptum.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.Fichier != null)
+                    {
+                        user.InfoSup = new AspNetUserInfoSup();
+                        user.InfoSup.Image = new Image();
+                        
+                        user.InfoSup.Image.Nom = model.Fichier.FileName;
+                        user.InfoSup.Image.Type = model.Fichier.ContentType;
+                        user.InfoSup.Image.Taille = (int)model.Fichier.Length;
+
+
+                        user.InfoSup.Image.Data = new byte[user.InfoSup.Image.Taille];
+                        var reader = model.Fichier.OpenReadStream();
+                        reader.ReadAsync(user.InfoSup.Image.Data, 0, user.InfoSup.Image.Taille);
+                        reader.Dispose();
+
+                        user.InfoSup.User = user;
+                        user.InfoSup.UserID = user.Id;
+
+                        _context.SaveChanges();
+
+                    }
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -117,6 +142,8 @@ namespace NovusConceptum.Controllers
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+                   
+                    
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
