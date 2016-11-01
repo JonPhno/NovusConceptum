@@ -9,12 +9,17 @@ using Microsoft.Extensions.Logging;
 using NovusConceptum.Models;
 using NovusConceptum.Models.ManageViewModels;
 using NovusConceptum.Services;
+using NovusConceptum.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace NovusConceptum.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private ApplicationDbContext _context;
+        private Image image;
+        private AspNetUserInfoSup infoSup;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -26,13 +31,15 @@ namespace NovusConceptum.Controllers
         SignInManager<ApplicationUser> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory,
+        ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+            _context = context;
         }
 
         //
@@ -54,14 +61,28 @@ namespace NovusConceptum.Controllers
             {
                 return View("Error");
             }
-            var model = new IndexViewModel
+            var users = _context.Users.Include(u => u.InfoSup).ThenInclude(i => i.Image);
+
+            var model = new IndexViewModel()
             {
                 HasPassword = await _userManager.HasPasswordAsync(user),
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
                 Logins = await _userManager.GetLoginsAsync(user),
-                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user)
+                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
+                ImageData = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Data,
+                ImageNom = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Nom,
+                ImageType = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Type
+
+
             };
+            
+          //  infoSup = user.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup;
+            //int imageId = infoSup.Image.ID;
+            //model.ImageData = _context.Image.Data;
+            //model.ImageNom = _context.Image.Nom;
+            //model.ImageType = _context.Image.Type;
+
             return View(model);
         }
 

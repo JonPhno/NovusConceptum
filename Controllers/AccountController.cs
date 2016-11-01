@@ -125,7 +125,7 @@ namespace NovusConceptum.Controllers
 
                         user.InfoSup.Image.Data = new byte[user.InfoSup.Image.Taille];
                         var reader = model.Fichier.OpenReadStream();
-                        reader.ReadAsync(user.InfoSup.Image.Data, 0, user.InfoSup.Image.Taille);
+                        await reader.ReadAsync(user.InfoSup.Image.Data, 0, user.InfoSup.Image.Taille);
                         reader.Dispose();
 
                         user.InfoSup.User = user;
