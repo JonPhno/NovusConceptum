@@ -53,3 +53,9 @@ textarea {
     width :150px;
     height: 150px;
 }
+
+img[class="image_utilisateur"]
+{
+    width :150px;
+    height: 150px;
+}

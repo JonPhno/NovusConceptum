@@ -41,7 +41,7 @@
                             @p.Auteur.UserName<br/>
                             @if (p.Auteur.InfoSup.Image.Data != null)
                             {
-                                <img width="150px" height="150px" class="image_utilisateur"  src="data:@p.Auteur.InfoSup.Image.Type;base64,@Convert.ToBase64String(@p.Auteur.InfoSup.Image.Data)" alt="@p.Auteur.InfoSup.Image.Nom" />
+                                <img  class="image_utilisateur"  src="data:@p.Auteur.InfoSup.Image.Type;base64,@Convert.ToBase64String(@p.Auteur.InfoSup.Image.Data)" alt="@p.Auteur.InfoSup.Image.Nom" />
                             }
                             else
                             {
