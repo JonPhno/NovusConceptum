@@ -25,7 +25,7 @@ namespace NovusConceptum.Controllers
             // ViewData["Message"] = "Notre forum de discussion";
             List<ForumViewModel> liste_fm = new List<ForumViewModel>();
 
-            var sujets = _context.Sujets.Include(p => p.Posts);
+            var sujets = _context.Sujets.Include(p => p.Posts).Include(i=> i.Auteur.InfoSup).ThenInclude(a=>a.Image);
 
            foreach (Sujet s in sujets)
             {
@@ -39,7 +39,7 @@ namespace NovusConceptum.Controllers
         public ActionResult Details(int id)
         {
             ForumViewModel forumVM = new ForumViewModel(_context.Sujets
-                .Include(s => s.Posts)
+                .Include(a=>a.Auteur).Include(i=>i.Auteur.InfoSup).ThenInclude(m=> m.Image).Include(s => s.Posts)
                 .SingleOrDefault(f => f.ID ==id));
 
             return View(forumVM);
@@ -64,11 +64,11 @@ namespace NovusConceptum.Controllers
               sujet.DateCreation = DateTime.Now;
                 sujet.DateModifier = DateTime.Now;
                 sujet.NombreMessages = 1;
-                sujet.Auteur = User.Identity.Name;
-                sujet.Dernier = User.Identity.Name;
+                sujet.Auteur = _context.Users.SingleOrDefault(u => User.Identity.Name == u.UserName);
+                sujet.Dernier = _context.Users.SingleOrDefault(u => User.Identity.Name == u.UserName);
                 Post post = new Post()
                 {
-                    Auteur = User.Identity.Name,
+                    Auteur = _context.Users.SingleOrDefault(u => User.Identity.Name == u.UserName),
                     Date = DateTime.Now,
                     Message = sujet.PremierMessage,
                     SujetID = sujet.ID,
@@ -204,6 +204,8 @@ namespace NovusConceptum.Controllers
         {
             PostViewModel PostVM = new PostViewModel();
             PostVM.SujetID = id;
+
+            ViewData["Id"] = id;
             return View(PostVM);
         }
 
@@ -221,10 +223,10 @@ namespace NovusConceptum.Controllers
                 Sujet sujet = _context.Sujets.SingleOrDefault(s=> s.ID == post.SujetID);
                 sujet.DateModifier = DateTime.Now;
                 //post.SujetID = sujet.ID;
-                post.Auteur = User.Identity.Name;
+                post.Auteur =_context.Users.SingleOrDefault(u=> User.Identity.Name== u.UserName);
                 sujet.NombreMessages++;
                 post.Date = DateTime.Now;
-                sujet.Dernier = User.Identity.Name;
+                sujet.Dernier = _context.Users.SingleOrDefault(u => User.Identity.Name == u.UserName);
                 post.ID = 0;
 
                 _context.Posts.Add(post);

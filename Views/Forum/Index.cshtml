@@ -1,13 +1,13 @@
 @model IEnumerable<NovusConceptum.Models.ForumViewModels.ForumViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Forum";
 }
 
-<h2>Index</h2>
+<h2>Forum</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Créer un nouveau sujet</a>
 </p>
 <table class="table">
     <thead>
@@ -40,11 +40,12 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Auteur)<br />
+
+                @Html.DisplayFor(modelItem => item.Auteur.UserName)<br />
                 @Html.DisplayFor(modelItem => item.DateCréation)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Dernier)<br />
+                @Html.DisplayFor(modelItem => item.Dernier.UserName)<br />
                 @Html.DisplayFor(modelItem => item.DateModifier)
             </td>
             <td>

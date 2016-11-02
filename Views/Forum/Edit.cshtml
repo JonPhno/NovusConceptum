@@ -1,14 +1,14 @@
 @model NovusConceptum.Models.ForumViewModels.ForumViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Modifier";
 }
 
-<h2>Edit</h2>
+<h2>Sujet</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>ForumViewModel</h4>
+        <h4>Modifier un sujet</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -76,7 +76,7 @@
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Retour à la liste</a>
 </div>
 
 @section Scripts {

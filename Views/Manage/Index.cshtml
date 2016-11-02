@@ -73,11 +73,11 @@
         <dd>
             @if (Model.ImageData != null)
             {
-                <img class="image_terrain" src="data:@Model.ImageType;base64,@Convert.ToBase64String(Model.ImageData)" alt="@Model.ImageNom" />
+                <img class="image_utilisateur" src="data:@Model.ImageType;base64,@Convert.ToBase64String(Model.ImageData)" alt="@Model.ImageNom" />
             }
             else
             {
-                <img  src="~/images/no-image.png" alt="pas d'image" />
+                <img class="image_utilisateur" src="~/images/no-image.png" alt="pas d'image" />
             }
         </dd>
     </dl>

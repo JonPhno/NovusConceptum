@@ -2,16 +2,18 @@
 
 @{
     ViewData["Title"] = "EditPost";
+    string link = "/Details/" + Model.SujetID;
+
 }
 
-<h2>EditPost</h2>
+<h2>Message</h2>
 
 <form asp-action="EditPost">
     <div class="form-horizontal">
-        <h4>PostViewModel</h4>
+        <h4>Modifier un message</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label asp-for="ID" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="ID" class="form-control" />
@@ -24,7 +26,7 @@
                 <input asp-for="Auteur" class="form-control" />
                 <span asp-validation-for="Auteur" class="text-danger" />
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <label asp-for="Date" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -55,7 +57,7 @@
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="@link">Retour au sujet</a>
 </div>
 
 @section Scripts {

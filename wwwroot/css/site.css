@@ -48,3 +48,8 @@ textarea {
     display: none
   }
 }
+
+.image_utilisateur {
+    width :150px;
+    height: 150px;
+}
