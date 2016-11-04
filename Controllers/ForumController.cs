@@ -19,8 +19,8 @@ namespace NovusConceptum.Controllers
             _context = context;
         }
 
-        // GET: Forum
         [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
+        // GET: Forum
         public ActionResult Index()
         {
             // ViewData["Message"] = "Notre forum de discussion";
@@ -47,7 +47,7 @@ namespace NovusConceptum.Controllers
 
             return View(forumVM);
         }
-
+        [Authorize(Roles = "Administrateur,Modérateur")]
         // GET: Forum/Create
         public ActionResult Create()
         {

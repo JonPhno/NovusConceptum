@@ -66,13 +66,13 @@ namespace NovusConceptum.Data
             {
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.Single(u => u.Email == "angel@overwatch.com").Id,
-                    RoleId = Context.Roles.Single(r => r.Name == "Administrateur").Id
+                    UserId = Context.Users.SingleOrDefault(u => u.Email == "angel@overwatch.com").Id,
+                    RoleId = Context.Roles.SingleOrDefault(r => r.Name == "Administrateur").Id
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.Single(u => u.Email == "angel@overwatch.com").Id,
-                    RoleId = Context.Roles.Single(r => r.Name == "Ange").Id
+                    UserId = Context.Users.SingleOrDefault(u => u.Email == "angel@overwatch.com").Id,
+                    RoleId = Context.Roles.SingleOrDefault(r => r.Name == "Ange").Id
                 }
             };
 
