@@ -8,9 +8,10 @@ using NovusConceptum.Data;
 namespace NovusConceptum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161103230923_BlizzSteam")]
+    partial class BlizzSteam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -19,8 +20,6 @@ namespace NovusConceptum.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
                 {
                     b.Property<string>("Id");
-
-                    b.Property<int?>("AspNetUserInfoSupID");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -32,8 +31,6 @@ namespace NovusConceptum.Data.Migrations
                         .HasAnnotation("MaxLength", 256);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AspNetUserInfoSupID");
 
                     b.HasIndex("NormalizedName")
                         .HasName("RoleNameIndex");
@@ -268,13 +265,6 @@ namespace NovusConceptum.Data.Migrations
                     b.HasIndex("DernierId");
 
                     b.ToTable("Sujets");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
-                {
-                    b.HasOne("NovusConceptum.Models.AspNetUserInfoSup")
-                        .WithMany("Roles")
-                        .HasForeignKey("AspNetUserInfoSupID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

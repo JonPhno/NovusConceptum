@@ -1,0 +1,53 @@
+@model IEnumerable<NovusConceptum.Models.MembresViewModels.MembresViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    Liste des membres du site...
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.InfoSup.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @if (item.User.InfoSup.Image.Data != null)
+                {
+                    <img class="image_utilisateur" src="data:@item.User.InfoSup.Image.Type;base64,@Convert.ToBase64String(@item.User.InfoSup.Image.Data)" alt="@item.User.InfoSup.Image.Nom" />
+                }
+                else
+                {
+                    <img class="image_utilisateur" src="~/images/no-image.png" alt="pas d'image" />
+
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.User.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

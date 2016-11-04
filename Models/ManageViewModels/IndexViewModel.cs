@@ -19,8 +19,11 @@ namespace NovusConceptum.Models.ManageViewModels
         public bool BrowserRemembered { get; set; }
 
         public string ImageType { get; set; }
-        public string ImageNom { get; set; }
+        public string ImageNom { get; set; } 
         public byte[] ImageData { get; set; }
+
+        public string Steam { get; set; }
+        public string Blizzard { get; set; }
         //public IndexViewModel(AspNetUserInfoSup InfoSup)
         //{
         //    HasPassword = true;

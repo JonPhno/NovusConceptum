@@ -72,8 +72,9 @@ namespace NovusConceptum.Controllers
                 BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
                 ImageData = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Data,
                 ImageNom = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Nom,
-                ImageType = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Type
-
+                ImageType = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Type,
+                Steam = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Steam,
+                Blizzard = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Blizzard
 
             };
             

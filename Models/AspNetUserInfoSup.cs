@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +12,9 @@ namespace NovusConceptum.Models
         public string UserID { get; set; }
         public ApplicationUser User { get; set; }
         public Image Image { get; set; }
-
+        public string Steam { get; set; }
+        public string Blizzard { get; set; }
+        public List<IdentityRole> Roles { get; set; }
 
     }
 

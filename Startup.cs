@@ -17,8 +17,10 @@ namespace NovusConceptum
 {
     public class Startup
     {
+        IHostingEnvironment _env;
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -92,6 +94,10 @@ namespace NovusConceptum
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            SeedData.AjouterRoles();
+            SeedData.AssocierRolesUsagers();
         }
     }
 }
