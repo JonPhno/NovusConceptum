@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Membres</h2>
 
 <p>
     Liste des membres du site...
@@ -12,9 +12,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.User.UserName)
             </th>
@@ -27,9 +24,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User.UserName)
             </td>
@@ -45,7 +39,9 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.User.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.User.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.User.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.User.Id })
             </td>
         </tr>
 }

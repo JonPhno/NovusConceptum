@@ -96,6 +96,7 @@ namespace NovusConceptum
             });
 
             SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            SeedData.AjouterUsagers();
             SeedData.AjouterRoles();
             SeedData.AssocierRolesUsagers();
         }

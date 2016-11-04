@@ -8,7 +8,7 @@ namespace NovusConceptum.Models.MembresViewModels
 {
     public class MembresViewModel
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
         public ApplicationUser User { get; set; }
         public List<IdentityRole> Roles { get; set; }
 
