@@ -34,6 +34,7 @@ namespace NovusConceptum.Models.AccountViewModels
         [Display(Name = "Image")]
         public byte[] ImageData { get; set; }
         // pour vue edit
+        [Required]
         public IFormFile Fichier { get; set; }
 
         public RegisterViewModel()

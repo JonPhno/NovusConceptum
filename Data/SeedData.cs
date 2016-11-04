@@ -140,6 +140,7 @@ namespace NovusConceptum.Data
             {
                 new IdentityUserRole<string>()
                 {
+<<<<<<< HEAD
                     UserId = Context.Users.Single(u => u.Email == "AngelaZiegler@novusconceptum.com").Id,
                     RoleId = Context.Roles.Single(r => r.Name == "Utilisateur").Id
                 },
@@ -167,6 +168,15 @@ namespace NovusConceptum.Data
                 {
                     UserId = Context.Users.Single(u => u.Email == "willp3@novusconceptum.com").Id,
                     RoleId = Context.Roles.Single(r => r.Name == "ExclusionForum").Id
+=======
+                    UserId = Context.Users.SingleOrDefault(u => u.Email == "angel@overwatch.com").Id,
+                    RoleId = Context.Roles.SingleOrDefault(r => r.Name == "Administrateur").Id
+                },
+                new IdentityUserRole<string>()
+                {
+                    UserId = Context.Users.SingleOrDefault(u => u.Email == "angel@overwatch.com").Id,
+                    RoleId = Context.Roles.SingleOrDefault(r => r.Name == "Ange").Id
+>>>>>>> 58f884c709dfbc313395f8c9668e647d0546e551
                 }
             };
 

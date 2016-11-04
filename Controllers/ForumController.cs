@@ -7,7 +7,7 @@ using NovusConceptum.Data;
 using NovusConceptum.Models;
 using NovusConceptum.Models.ForumViewModels;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -19,6 +19,7 @@ namespace NovusConceptum.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Forum
         public ActionResult Index()
         {
@@ -36,15 +37,17 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Forum/Details/5
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Details(int id)
         {
             ForumViewModel forumVM = new ForumViewModel(_context.Sujets
-                .Include(a=>a.Auteur).Include(i=>i.Auteur.InfoSup).ThenInclude(m=> m.Image).Include(s => s.Posts)
+                .Include(a=>a.Auteur).Include(i=>i.Auteur.InfoSup).ThenInclude(m=> m.Image)
+                .Include(s => s.Posts).ThenInclude(p=>p.Auteur).ThenInclude(au=>au.InfoSup).ThenInclude(inf=>inf.Image)
                 .SingleOrDefault(f => f.ID ==id));
 
             return View(forumVM);
         }
-
+        [Authorize(Roles = "Administrateur,Modérateur")]
         // GET: Forum/Create
         public ActionResult Create()
         {
@@ -54,6 +57,7 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -86,6 +90,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Forum/Edit/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(int id)
         {
             ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
@@ -95,6 +100,7 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(ForumViewModel forumModel)
         {
             try
@@ -121,6 +127,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Forum/Delete/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id)
         {
             ForumViewModel ForumVM = new ForumViewModel(_context.Sujets.SingleOrDefault(s => s.ID == id));
@@ -130,6 +137,7 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
@@ -148,6 +156,7 @@ namespace NovusConceptum.Controllers
         // actions reliés aux posts
 
         // GET: Forum/Edit/5
+        [Authorize(Roles = "Administrateur,Modérateur,Ange")]
         public ActionResult EditPost(int id)
         {
             PostViewModel PostVM = new PostViewModel(_context.Posts.SingleOrDefault(s => s.ID == id));
@@ -157,6 +166,7 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur,Ange")]
         public ActionResult EditPost(PostViewModel postModel)
         {
             try
@@ -175,6 +185,8 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Forum/Delete/5
+        [Authorize(Roles = "Administrateur,Modérateur,Ange")]
+
         public ActionResult DeletePost(int id)
         {
             PostViewModel PostVM = new PostViewModel(_context.Posts.SingleOrDefault(s => s.ID == id));
@@ -184,6 +196,8 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur,Ange")]
+
         public ActionResult DeletePost(int id, IFormCollection collection)
         {
             try
@@ -200,17 +214,18 @@ namespace NovusConceptum.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult CreatePost(int id)
         {
             PostViewModel PostVM = new PostViewModel();
             PostVM.SujetID = id;
 
-            ViewData["Id"] = id;
             return View(PostVM);
         }
 
         // POST: Forum/Create
         [HttpPost]
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         [ValidateAntiForgeryToken]
         public ActionResult CreatePost(IFormCollection collection)
         {
