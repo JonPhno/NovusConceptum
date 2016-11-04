@@ -9,6 +9,7 @@ using NovusConceptum.Models.MembresViewModels;
 using Microsoft.EntityFrameworkCore;
 using NovusConceptum.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -21,6 +22,8 @@ namespace NovusConceptum.Controllers
         {
             _context = context;
         }
+
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Membres
         public ActionResult Index()
         {
@@ -35,6 +38,7 @@ namespace NovusConceptum.Controllers
             return View(list_mvm);
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Membres/Details/5
         public ActionResult Details(string id)
         {
@@ -50,29 +54,30 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Membres/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Membres/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Membres/Edit/5
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Edit(string id)
         {
             MembresViewModel membreVM = new MembresViewModel(_context.Users
@@ -86,6 +91,7 @@ namespace NovusConceptum.Controllers
         // POST: Membres/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur")]
         //public ActionResult Edit(string id, IFormCollection collection)
         public ActionResult Edit(MembresViewModel modelMembre, string[] selectedRoles)
         {
@@ -120,6 +126,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Membres/Delete/5
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Delete(string id)
         {
             MembresViewModel membreVM = new MembresViewModel(_context.Users
@@ -136,6 +143,7 @@ namespace NovusConceptum.Controllers
         // POST: Membres/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Delete(string id, IFormCollection collection)
         {
                 try

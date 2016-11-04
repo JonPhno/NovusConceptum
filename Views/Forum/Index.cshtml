@@ -6,6 +6,8 @@
 
 <h2>Forum</h2>
 
+@if (!User.IsInRole("ExclusionForum"))
+{
 <p>
     @if (User.IsInRole("Administrateur") ||
                                     User.IsInRole("Modérateur"))
@@ -59,9 +61,9 @@
                 </td>
                 <td>
                     @if (User.IsInRole("Administrateur") ||
-                    User.IsInRole("Modérateur"))
+        User.IsInRole("Modérateur"))
                     {
-                        @Html.ActionLink("Modifier", "Edit", new { id = item.ID }) |<br />
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.ID }) @:|<br />
                         @Html.ActionLink("Supprimer", "Delete", new { id = item.ID })
                     }
                 </td>
@@ -69,3 +71,8 @@
         }
     </tbody>
 </table>
+}
+else
+{
+    <p>Vous n'avez pas accès à cette page</p>
+}
