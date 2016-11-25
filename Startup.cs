@@ -95,10 +95,10 @@ namespace NovusConceptum
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
-            SeedData.AjouterUsagers();
-            SeedData.AjouterRoles();
-            SeedData.AssocierRolesUsagers();
+            //SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            //SeedData.AjouterUsagers();
+            //SeedData.AjouterRoles();
+            //SeedData.AssocierRolesUsagers();
         }
     }
 }
