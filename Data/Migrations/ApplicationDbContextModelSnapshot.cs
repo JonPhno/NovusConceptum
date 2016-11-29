@@ -159,6 +159,8 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<string>("SecurityStamp");
 
+                    b.Property<int?>("TournoisID");
+
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
@@ -172,6 +174,8 @@ namespace NovusConceptum.Data.Migrations
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasName("UserNameIndex");
+
+                    b.HasIndex("TournoisID");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -259,6 +263,8 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<string>("PremierMessage")
                         .IsRequired();
 
+                    b.Property<bool>("Test2");
+
                     b.Property<string>("Titre");
 
                     b.HasKey("ID");
@@ -268,6 +274,32 @@ namespace NovusConceptum.Data.Migrations
                     b.HasIndex("DernierId");
 
                     b.ToTable("Sujets");
+                });
+
+            modelBuilder.Entity("NovusConceptum.Models.Tournois", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<DateTime>("FinInscriptions");
+
+                    b.Property<string>("Jeu");
+
+                    b.Property<string>("Nom");
+
+                    b.Property<int>("NombreEquipe");
+
+                    b.Property<int>("NombreJoueursEquipe");
+
+                    b.Property<string>("Serveur");
+
+                    b.Property<bool>("Spectateurs");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Tournois");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -312,6 +344,13 @@ namespace NovusConceptum.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("NovusConceptum.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("NovusConceptum.Models.Tournois")
+                        .WithMany("Joueurs")
+                        .HasForeignKey("TournoisID");
                 });
 
             modelBuilder.Entity("NovusConceptum.Models.AspNetUserInfoSup", b =>

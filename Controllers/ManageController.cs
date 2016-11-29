@@ -350,6 +350,83 @@ namespace NovusConceptum.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
+        // GET: Manage/Edit/5
+        public async Task<ActionResult> Edit(int id)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var users = _context.Users.Include(u => u.InfoSup).ThenInclude(i => i.Image);
+
+            var model = new IndexViewModel()
+            {
+                HasPassword = await _userManager.HasPasswordAsync(user),
+                PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
+                TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
+                Logins = await _userManager.GetLoginsAsync(user),
+                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
+                ImageData = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Data,
+                ImageNom = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Nom,
+                ImageType = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Image.Type,
+                Steam = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Steam,
+                Blizzard = users.SingleOrDefault(u => u.UserName == User.Identity.Name).InfoSup.Blizzard
+
+            };
+            return View(model);
+        }
+
+        // POST: Manage/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(IndexViewModel userModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // TODO: Add update logic here
+                    ApplicationUser user = _context.Users.Include(u => u.InfoSup).ThenInclude(i => i.Image).Where(u => u.UserName == User.Identity.Name).SingleOrDefault();
+                    if (userModel.Fichier != null)
+                    {
+                        if (user.InfoSup.Image == null)
+                        {
+                            user.InfoSup.Image = new Image();
+                        }
+
+                        user.InfoSup.Image.Nom = userModel.Fichier.FileName;
+                        user.InfoSup.Image.Type = userModel.Fichier.ContentType;
+                        user.InfoSup.Image.Taille = (int)userModel.Fichier.Length;
+
+                        //Charger l'image
+                        user.InfoSup.Image.Data = new byte[user.InfoSup.Image.Taille];
+                        var reader = userModel.Fichier.OpenReadStream();
+                        reader.ReadAsync(user.InfoSup.Image.Data, 0, user.InfoSup.Image.Taille);
+                        reader.Dispose();
+                    }
+                    if (userModel.Steam != user.InfoSup.Steam)
+                    {
+                        user.InfoSup.Steam = userModel.Steam;
+                    }
+                    if (userModel.Steam != user.InfoSup.Blizzard)
+                    {
+                        user.InfoSup.Blizzard = userModel.Blizzard;
+                    }
+                    TryUpdateModelAsync(user);
+                    _context.SaveChanges();
+                }
+                else
+                    return View();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)

@@ -1,0 +1,89 @@
+@model IEnumerable<NovusConceptum.Models.TournoisViewModels.TournoisViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jeu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serveur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Spectateurs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinInscriptions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreEquipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreJoueursEquipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacesRestantes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jeu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serveur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Spectateurs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinInscriptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEquipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreJoueursEquipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacesRestantes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.ID}) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

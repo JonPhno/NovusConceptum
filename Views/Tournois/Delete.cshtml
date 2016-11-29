@@ -1,0 +1,82 @@
+@model NovusConceptum.Models.TournoisViewModels.TournoisViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TournoisViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Jeu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Jeu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Serveur)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Serveur)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Spectateurs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Spectateurs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FinInscriptions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FinInscriptions)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEquipe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreEquipe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreJoueursEquipe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreJoueursEquipe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PlacesRestantes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PlacesRestantes)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

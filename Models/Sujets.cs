@@ -21,6 +21,8 @@ namespace NovusConceptum.Models
         [Required]
         public string PremierMessage { get; set; }
 
+        public bool Test2 { get; set; }
+
     }
 
     public class Post

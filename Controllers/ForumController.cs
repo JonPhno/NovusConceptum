@@ -246,8 +246,8 @@ namespace NovusConceptum.Controllers
 
                 _context.Posts.Add(post);
                 _context.SaveChanges();
-                return RedirectToAction("/Details/" + _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre).ID);
-           }
+                return RedirectToAction("Details", new { id = _context.Sujets.SingleOrDefault(s => s.Titre == sujet.Titre).ID });
+            }
             catch
             {
                 return View();
