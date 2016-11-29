@@ -72,6 +72,7 @@ namespace NovusConceptum.Controllers
             //var point = new IPEndPoint(ip, 25565);
             //sock.Bind(point);
             //sock.Listen(10);
+
         //   TcpClient c = new TcpClient();
          //   UdpClient u = new UdpClient();
             //bool b;
@@ -79,6 +80,7 @@ namespace NovusConceptum.Controllers
             //{
        //         u.
         //      c.ConnectAsync("192.168.0.117", 25565);
+
             //    b = c.Connected;
             //    c.Dispose();
 

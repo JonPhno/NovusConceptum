@@ -233,7 +233,10 @@
 "C:\Users\William\Source\Workspaces\NovusConceptum\Controllers\HomeController.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Controllers\ManageController.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Controllers\MembresController.cs"
+<<<<<<< HEAD
 "C:\Users\William\Source\Workspaces\NovusConceptum\Controllers\TournoisController.cs"
+=======
+>>>>>>> 11f1f675e25e4219e4a1db489d3298a80b74f43b
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\ApplicationDbContext.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\SeedData.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\00000000000000_CreateIdentitySchema.cs"
@@ -256,16 +259,22 @@
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161103230923_BlizzSteam.Designer.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161104011511_AjoutDinfoManquante.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161104011511_AjoutDinfoManquante.Designer.cs"
+<<<<<<< HEAD
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161129173613_Test.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161129173613_Test.Designer.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161129174837_Tournois.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\20161129174837_Tournois.Designer.cs"
+=======
+>>>>>>> 11f1f675e25e4219e4a1db489d3298a80b74f43b
 "C:\Users\William\Source\Workspaces\NovusConceptum\Data\Migrations\ApplicationDbContextModelSnapshot.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\ApplicationUser.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\AspNetUserInfoSup.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\MesAttributs.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\Sujets.cs"
+<<<<<<< HEAD
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\Tournois.cs"
+=======
+>>>>>>> 11f1f675e25e4219e4a1db489d3298a80b74f43b
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\AccountViewModels\ExternalLoginConfirmationViewModel.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\AccountViewModels\ForgotPasswordViewModel.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\AccountViewModels\LoginViewModel.cs"
@@ -285,7 +294,10 @@
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\ManageViewModels\SetPasswordViewModel.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\ManageViewModels\VerifyPhoneNumberViewModel.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\MembresViewModels\MembresViewModel.cs"
+<<<<<<< HEAD
 "C:\Users\William\Source\Workspaces\NovusConceptum\Models\TournoisViewModels\TournoisViewModel.cs"
+=======
+>>>>>>> 11f1f675e25e4219e4a1db489d3298a80b74f43b
 "C:\Users\William\Source\Workspaces\NovusConceptum\Services\IEmailSender.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Services\ISmsSender.cs"
 "C:\Users\William\Source\Workspaces\NovusConceptum\Services\MessageServices.cs"
