@@ -1,0 +1,58 @@
+@model NovusConceptum.Models.SondageViewModel.SondageViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>SondageViewModel</h4>
+        <hr />
+        <input asp-for="ID" class="form-control" type="hidden" />
+        <input asp-for="Date" class="form-control" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Nom" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateFin" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateFin" class="form-control" />
+                <span asp-validation-for="DateFin" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Options" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Options" class="form-control" />
+                <span asp-validation-for="Options" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,55 @@
+@model NovusConceptum.Models.SondageViewModel.SondageViewModel
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h2>Results</h2>
+
+<div>
+    <h4>SondageViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateFin)
+        </dd>
+        <dt>
+            Options|Resultats
+        </dt>
+        <dd>
+            @if (Model.Options != null && Model.Choix != null)
+            {
+                for (int i = 0; i <Model.Options.Count; i++)
+                {
+                    @Model.Options[i] @: @Model.Choix[i] <br />
+                     
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

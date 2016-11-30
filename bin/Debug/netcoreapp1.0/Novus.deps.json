@@ -39,6 +39,14 @@
         "runtime": {
           "Novus.dll": {}
         },
+        "resources": {
+          "en/Novus.resources.dll": {
+            "locale": "en"
+          },
+          "fr/Novus.resources.dll": {
+            "locale": "fr"
+          }
+        },
         "compile": {
           "Novus.dll": {}
         }

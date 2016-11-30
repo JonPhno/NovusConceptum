@@ -2897,6 +2897,14 @@
         },
         "runtime": {
           "Novus.dll": {}
+        },
+        "resources": {
+          "en/Novus.resources.dll": {
+            "locale": "en"
+          },
+          "fr/Novus.resources.dll": {
+            "locale": "fr"
+          }
         }
       },
       "Libuv/1.9.0": {
