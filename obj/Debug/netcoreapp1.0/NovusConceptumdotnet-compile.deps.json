@@ -2897,6 +2897,14 @@
         },
         "runtime": {
           "NovusConceptum.dll": {}
+        },
+        "resources": {
+          "en/NovusConceptum.resources.dll": {
+            "locale": "en"
+          },
+          "fr/NovusConceptum.resources.dll": {
+            "locale": "fr"
+          }
         }
       },
       "Libuv/1.9.0": {

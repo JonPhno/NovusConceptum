@@ -7,6 +7,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
 using System.Net;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.AspNetCore.Localization;
 
 namespace NovusConceptum.Controllers
 {
@@ -72,15 +75,13 @@ namespace NovusConceptum.Controllers
             //var point = new IPEndPoint(ip, 25565);
             //sock.Bind(point);
             //sock.Listen(10);
-
-        //   TcpClient c = new TcpClient();
-         //   UdpClient u = new UdpClient();
+           //TcpClient c = new TcpClient();
+           // UdpClient u = new UdpClient();
             //bool b;
             //try
             //{
-       //         u.
-        //      c.ConnectAsync("192.168.0.117", 25565);
-
+              //  u.
+              //c.ConnectAsync("192.168.0.117", 25565);
             //    b = c.Connected;
             //    c.Dispose();
 
@@ -96,6 +97,17 @@ namespace NovusConceptum.Controllers
             // l'état du serveur 
 
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+            new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+            return LocalRedirect(returnUrl);
         }
     }
 }

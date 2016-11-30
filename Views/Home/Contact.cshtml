@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Nous contacter?";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Contact"];
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<h3>@Localizer["Message"]</h3>
 
 <!--<address>
     One Microsoft Way<br />
@@ -11,11 +15,11 @@
     425.555.0100
 </address>
     -->
-<p>Si vous voulez nous contacter par quelconque platforme, nos informations sont dans nos profiles:<p />
+<p>@Localizer["ContactPara"]<p />
    <a href=""><strong>William</strong> </a><br />
    <a href=""><strong>Samuel</strong> </a>
 
 
 
 
-<p>Nous sommes localisé près de Beloeil sur la rive sud de Montréal</p>
+<p>@Localizer["Location"]</p>

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,14 +40,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Acceuil</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">À propos</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Nous contacter</a></li>
-                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">Forums</a></li>
-                    <li><a asp-area="" asp-controller="Membres" asp-action="Index">Membres</a></li>
-                    <li><a asp-area="" asp-controller="Tournois" asp-action="Index">Tournois</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Test">Test</a></li>
-
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">@SharedLocalizer["Home"]</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">@SharedLocalizer["About"]</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">@SharedLocalizer["Contact"]</a></li>
+                    <li><a asp-area="" asp-controller="Forum" asp-action="Index">@SharedLocalizer["Forums"]</a></li>
+                    <li><a asp-area="" asp-controller="Membres" asp-action="Index">@SharedLocalizer["Members"]</a></li>
+                    <li><a asp-area="" asp-controller="Tournois" asp-action="Index">@SharedLocalizer["Tournament"]</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
