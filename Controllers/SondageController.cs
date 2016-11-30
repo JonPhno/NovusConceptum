@@ -138,6 +138,10 @@ namespace NovusConceptum.Controllers
             try
             {
                 Sondage sondage = _context.Sondages.Include(s => s.Utilisateurs).SingleOrDefault(so => so.ID == id);
+
+                if (!sondage.Utilisateurs.Any(u => u.UserName == User.Identity.Name) && sondage.Date > DateTime.Now)
+                {
+
                     string[] options = sondage.Options.Split(',');
                     string[] choix = sondage.Choix.Split(',');
             
@@ -154,9 +158,11 @@ namespace NovusConceptum.Controllers
                     choixVote += "," + choix[i];
                 }
                 sondage.Choix = choixVote;
+                sondage.Utilisateurs.Add(_context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name));
                 _context.Entry(sondage).State = EntityState.Modified;
                 _context.SaveChanges();
-                return RedirectToAction("Results",new { });
+                }
+                return RedirectToAction("Results", new { sondage.ID });
             }
             catch
             {

@@ -55,7 +55,14 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Vote", "Vote", new { id = Model.ID }) |
-    @Html.ActionLink("Results", "Results", new { id = Model.ID  }) |
+    @if (Model.Utilisateurs.Any(u => u.UserName == User.Identity.Name))
+    {
+        @Html.ActionLink("Results", "Results", new { id = Model.ID })
+    }
+    else
+    {
+        @Html.ActionLink("Vote", "Vote", new { id = Model.ID })
+    }
+   |
     <a asp-action="Index">Back to List</a>
 </div>
