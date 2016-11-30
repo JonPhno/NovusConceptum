@@ -15,6 +15,7 @@ namespace NovusConceptum.Controllers
 {
     public class HomeController : Controller
     {
+        private string _sOut;
         public IActionResult Index()
         {
             return View();
@@ -54,19 +55,44 @@ namespace NovusConceptum.Controllers
         }
         public IActionResult Execute()
         {
-            string batchFileLocation = @"A:\\William\\Desktop\\test.bat";
+            string batchFileLocation = @"Batch\\test.bat";
+           // string batchFileLocation = @"/C c:\Users\William\Desktop\Novus_Conceptum\NovusConceptum\Batch\test.bat";
+           // string wodir = @"C:\\Users\\William\\Desktop\\Novus Conceptum\\NovusConceptum\\Batch\\";
             Process p = new Process();
-            p.StartInfo.FileName = /*@"C:\Windows\System32\cmd.exe";*/batchFileLocation;
+            var startinfo = new ProcessStartInfo(batchFileLocation);
+           // var startinfo = new ProcessStartInfo("cmd.exe", batchFileLocation);
+           // startinfo.WorkingDirectory = wodir;
+            p.StartInfo = startinfo;
+          //  p.StartInfo.FileName = /*@"C:\Windows\System32\cmd.exe";*/batchFileLocation;
            // p.StartInfo.WorkingDirectory = Path.GetDirectoryName(batchFileLocation);
             p.StartInfo.UseShellExecute = false;
             //p.StartInfo.Arguments = batchFileLocation;
             // Run the process and wait for it to complete
             p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.PasswordInClearText = "Tiwill88";
+
+            
+           
+            startinfo.RedirectStandardOutput = true;
+            startinfo.UseShellExecute = false;
+            
+            //p.OutputDataReceived += (sender, args) => _sOut += args.Data; // do whatever processing you need to do in this handler
+          //    p.OutputDataReceived += P_OutputDataReceived;
             p.Start();
-  //          p.WaitForExit();
-            return View("Index");
+            string s = p.StandardOutput.ReadToEnd();
+            //  p.BeginOutputReadLine();
+
+            // ViewData["test"] = str;
+            //          p.WaitForExit();
+            ViewData["test"] = s;
+            return View("Test");
         }
+
+        private void P_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _sOut += e.Data;
+        }
+
         public IActionResult Online()
         {
 
