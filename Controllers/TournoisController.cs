@@ -43,18 +43,25 @@ namespace NovusConceptum.Controllers
         // GET: Tournois/Create
         public ActionResult Create()
         {
-            return View();
+            TournoisViewModel tournoisvm = new TournoisViewModel();
+            tournoisvm.Date = DateTime.Now;
+            tournoisvm.FinInscriptions = DateTime.Now;
+            return View(tournoisvm);
         }
 
         // POST: Tournois/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(TournoisViewModel tvm)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                Tournois tournois = new Tournois();
+                TryUpdateModelAsync(tournois);
+                tournois.Date = tvm.Date;
+                tournois.FinInscriptions = tvm.FinInscriptions;
+                _context.Tournois.Add(tournois);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -80,6 +87,8 @@ namespace NovusConceptum.Controllers
                 // TODO: Add update logic here
                 Tournois tournois = _context.Tournois.Include(t=>t.Joueurs).SingleOrDefault(s => s.ID == tournoisModel.ID);
                 TryUpdateModelAsync(tournois);
+                tournois.Date = tournoisModel.Date;
+                tournois.FinInscriptions = tournoisModel.FinInscriptions;
                 if (tournois.Joueurs != null)
                 {
                     tournois.Joueurs = tournois.Joueurs;

@@ -48,13 +48,14 @@ namespace NovusConceptum.Controllers
         // POST: Sondage/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(SondageViewModel svm)
         {
             try
             {
                 // TODO: Add insert logic here
                 Sondage sondage = new Sondage();
                 TryUpdateModelAsync(sondage);
+                sondage.Options = svm.OptionsString;
                 sondage.Date = DateTime.Now;
                 int iNombreOptions = sondage.Options.Count();
                 string choix = "0";
@@ -77,19 +78,25 @@ namespace NovusConceptum.Controllers
         public ActionResult Edit(int id)
         {
             SondageViewModel s = new SondageViewModel(_context.Sondages.Include(u => u.Utilisateurs).SingleOrDefault(so => so.ID == id));
+            s.OptionsString = s.Options[0];
+            for (int i =1; i < s.Options.Count; i++)
+            {
+                s.OptionsString += "," + s.Options[i];
+;            }
             return View(s);
         }
 
         // POST: Sondage/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, SondageViewModel svm)
         {
             try
             {
                 // TODO: Add insert logic here
                 Sondage sondage = _context.Sondages.Include(s => s.Utilisateurs).SingleOrDefault(so => so.ID == id);
                 TryUpdateModelAsync(sondage);
+                sondage.Options = svm.OptionsString;
                 sondage.Date = DateTime.Now;
                 _context.Entry(sondage).State = EntityState.Modified;
                 _context.SaveChanges();

@@ -11,6 +11,7 @@ namespace NovusConceptum.Models.SondageViewModel
         public string Nom { get; set; }
         public string Description { get; set; }
         public List<string> Options { get; set; }
+        public string OptionsString { get; set; }
         public List<int> Choix { get; set; }
         public List<ApplicationUser> Utilisateurs { get; set; }
         public DateTime Date { get; set; }

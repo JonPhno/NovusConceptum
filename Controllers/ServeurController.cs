@@ -34,7 +34,8 @@ namespace NovusConceptum.Controllers
         // GET: Serveur/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ServeurViewModel serveur = new ServeurViewModel(_context.Serveurs.Include(s => s.Admin).FirstOrDefault(se => se.ID == id));
+            return View(serveur);
         }
 
         // GET: Serveur/Create
@@ -51,7 +52,11 @@ namespace NovusConceptum.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                Serveur s = new Serveur();
+                TryUpdateModelAsync(s);
+                s.Admin = _context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name);
+                _context.Serveurs.Add(s);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -63,7 +68,8 @@ namespace NovusConceptum.Controllers
         // GET: Serveur/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ServeurViewModel serveur = new ServeurViewModel(_context.Serveurs.Include(s => s.Admin).FirstOrDefault(se => se.ID == id));
+            return View(serveur);
         }
 
         // POST: Serveur/Edit/5
@@ -74,7 +80,10 @@ namespace NovusConceptum.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                Serveur serveur = _context.Serveurs.Include(s => s.Admin).FirstOrDefault(se => se.ID == id);
+                TryUpdateModelAsync(serveur);
+                _context.Entry(serveur).State = EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -86,7 +95,8 @@ namespace NovusConceptum.Controllers
         // GET: Serveur/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ServeurViewModel serveur = new ServeurViewModel(_context.Serveurs.Include(s => s.Admin).FirstOrDefault(se => se.ID == id));
+            return View(serveur);
         }
 
         // POST: Serveur/Delete/5
@@ -97,7 +107,9 @@ namespace NovusConceptum.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                Serveur serveur = _context.Serveurs.Include(s => s.Admin).FirstOrDefault(se => se.ID == id);
+                _context.Remove(serveur);
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
