@@ -8,9 +8,10 @@ using NovusConceptum.Data;
 namespace NovusConceptum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161202165813_AjoutServeurs")]
+    partial class AjoutServeurs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -254,8 +255,6 @@ namespace NovusConceptum.Data.Migrations
 
                     b.Property<int?>("AdminID");
 
-                    b.Property<string>("AdresseIp");
-
                     b.Property<string>("Description");
 
                     b.Property<int>("Joueurs");
@@ -265,8 +264,6 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<string>("Nom");
 
                     b.Property<bool>("Ouvert");
-
-                    b.Property<int>("Port");
 
                     b.Property<string>("Version");
 

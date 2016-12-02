@@ -237,6 +237,7 @@ C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\ForumControl
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\HomeController.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\ManageController.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\MembresController.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\ServeurController.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\SondageController.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Controllers\TournoisController.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\ApplicationDbContext.cs
@@ -267,10 +268,16 @@ C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161129
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161129174837_Tournois.Designer.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161130005736_Sondages.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161130005736_Sondages.Designer.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161202165813_AjoutServeurs.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161202165813_AjoutServeurs.Designer.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161202173624_ModifServeurs.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\20161202173624_ModifServeurs.Designer.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Data\Migrations\ApplicationDbContextModelSnapshot.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\ApplicationUser.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\AspNetUserInfoSup.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\MesAttributs.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\Serveur.cs
+C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\ServeurViewModel.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\SharedResource.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\Sondage.cs
 C:\Users\William\Desktop\Novus Conceptum\NovusConceptum\Models\Sujets.cs
