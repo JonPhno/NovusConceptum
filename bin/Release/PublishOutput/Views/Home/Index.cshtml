@@ -1,12 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["HomePage"];
 }
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6" style="text-align:center"><img src="~/images/logo.png" height="256px" width="256px"/></div>
     <div class="col-md-3"></div>
 </div>
-<h1>Test 1</h1>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -19,9 +21,9 @@
             <img src="~/images/BannerArma.png" alt="Arma3" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Serveur Arma3 disponible dès maintenant !
+                    @Localizer["Arma3Text"]
                     <a class="btn btn-default" href="/* */">
-                        En savoir plus
+                        @Localizer["KnowMore"]
                     </a>
                 </p>
             </div>
@@ -30,9 +32,9 @@
             <img src="~/images/BannerArk.png" alt="Ark " class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Nouvel événement sur le serveur de Ark Survival Evolved
+                    @Localizer["ArkText"]
                     <a class="btn btn-default" href="">
-                        En savoir plus
+                        @Localizer["KnowMore"]
                     </a>
                 </p>
             </div>
@@ -41,9 +43,9 @@
             <img src="~/images/BannerMinecraft.png" alt="Minecraft" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Besoin d'un nouvel administrateur pour le serveur de Minecraft!
+                    @Localizer["MinecraftText"]
                     <a class="btn btn-default" href="">
-                        En savoir plus
+                        @Localizer["KnowMore"]
                     </a>
                 </p>
             </div>
@@ -52,9 +54,9 @@
             <img src="~/images/BannerTeams.png" alt="Teamspeak" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Configurations requises pour le client Teamspeak
+                    @Localizer["TeamSpeakText"]
                     <a class="btn btn-default" href="">
-                        En savoir plus
+                        @Localizer["KnowMore"]
                     </a>
                 </p>
             </div>

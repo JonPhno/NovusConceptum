@@ -56,34 +56,16 @@ namespace NovusConceptum.Controllers
         public IActionResult Execute()
         {
             string batchFileLocation = @"Batch\\test.bat";
-           // string batchFileLocation = @"/C c:\Users\William\Desktop\Novus_Conceptum\NovusConceptum\Batch\test.bat";
-           // string wodir = @"C:\\Users\\William\\Desktop\\Novus Conceptum\\NovusConceptum\\Batch\\";
             Process p = new Process();
-            var startinfo = new ProcessStartInfo(batchFileLocation);
-           // var startinfo = new ProcessStartInfo("cmd.exe", batchFileLocation);
-           // startinfo.WorkingDirectory = wodir;
+            var startinfo = new ProcessStartInfo(batchFileLocation," asd ");
             p.StartInfo = startinfo;
-          //  p.StartInfo.FileName = /*@"C:\Windows\System32\cmd.exe";*/batchFileLocation;
-           // p.StartInfo.WorkingDirectory = Path.GetDirectoryName(batchFileLocation);
             p.StartInfo.UseShellExecute = false;
-            //p.StartInfo.Arguments = batchFileLocation;
-            // Run the process and wait for it to complete
             p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "Tiwill88";
-
-            
-           
+            p.StartInfo.PasswordInClearText = "allo";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
-            
-            //p.OutputDataReceived += (sender, args) => _sOut += args.Data; // do whatever processing you need to do in this handler
-          //    p.OutputDataReceived += P_OutputDataReceived;
             p.Start();
             string s = p.StandardOutput.ReadToEnd();
-            //  p.BeginOutputReadLine();
-
-            // ViewData["test"] = str;
-            //          p.WaitForExit();
             ViewData["test"] = s;
             return View("Test");
         }
