@@ -8,10 +8,10 @@ namespace NovusConceptum.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Username")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

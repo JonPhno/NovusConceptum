@@ -1,14 +1,16 @@
 @model NovusConceptum.Models.TournoisViewModels.TournoisViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = SharedLocalizer["Delete"];
 }
 
-<h2>Delete</h2>
+<h2>@ViewData["Title"]</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@SharedLocalizer["Sure"]</h3>
 <div>
-    <h4>TournoisViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,55 +20,55 @@
             @Html.DisplayFor(model => model.ID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nom)
+            @SharedLocalizer["Name"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nom)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Jeu)
+            @SharedLocalizer["Game"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Jeu)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Serveur)
+            @SharedLocalizer["Server"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Serveur)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Spectateurs)
+            @SharedLocalizer["Spec"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Spectateurs)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FinInscriptions)
+            @SharedLocalizer["DateEnd"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FinInscriptions)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @SharedLocalizer["Date"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NombreEquipe)
+            @SharedLocalizer["NumTeam"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NombreEquipe)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NombreJoueursEquipe)
+            @SharedLocalizer["NumPlayerTeam"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NombreJoueursEquipe)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PlacesRestantes)
+            @SharedLocalizer["PlacesLeft"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PlacesRestantes)
@@ -75,8 +77,8 @@
     
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <input type="submit" value="@SharedLocalizer["Delete"]" class="btn btn-default" > |
+            <a asp-action="Index">@SharedLocalizer["Bacl"]</a>
         </div>
     </form>
 </div>

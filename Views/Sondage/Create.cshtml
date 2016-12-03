@@ -1,57 +1,58 @@
 @model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = SharedLocalizer["Create"];
 }
 
-<h2>Create</h2>
+<h2>@ViewData["Title"]</h2>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>SondageViewModel</h4>
         <hr />
         <input asp-for="ID" class="form-control" type="hidden" />
         <input asp-for="Date" class="form-control" type="hidden" />
         <input asp-for="Options" class="form-control" type="hidden" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Nom" class="col-md-2 control-label"></label>
+            <label asp-for="Nom" class="col-md-2 control-label">@SharedLocalizer["Name"]</label>
             <div class="col-md-10">
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <label asp-for="Description" class="col-md-2 control-label">@SharedLocalizer["Description"]</label>
             <div class="col-md-10">
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DateFin" class="col-md-2 control-label"></label>
+            <label asp-for="DateFin" class="col-md-2 control-label">@SharedLocalizer["DateEnd"]</label>
             <div class="col-md-10">
                 <input asp-for="DateFin" class="form-control" />
                 <span asp-validation-for="DateFin" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="OptionsString" class="col-md-2 control-label"></label>
+            <label asp-for="OptionsString" class="col-md-2 control-label">@SharedLocalizer["Options"]</label>
             <div class="col-md-10">
-                <input asp-for="OptionsString" class="form-control" />Les choix doivent etre separes par des vergules
-                <span asp-validation-for="OptionsString" class="text-danger" />
+                <input asp-for="Options" class="form-control" />@SharedLocalizer["Choices"]
+                <span asp-validation-for="Options" class="text-danger" />
             </div>
         </div> 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@SharedLocalizer["Create"]" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
 </div>
 
 @section Scripts {

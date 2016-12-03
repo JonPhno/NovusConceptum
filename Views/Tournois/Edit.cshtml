@@ -1,34 +1,42 @@
 @model NovusConceptum.Models.TournoisViewModels.TournoisViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = SharedLocalizer["Edit"];
 }
 
-<h2>Edit</h2>
+<h2>@ViewData["Title"]</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>TournoisViewModel</h4>
         <hr />
         <input asp-for="ID" class="form-control" type="hidden" />
         <input asp-for="PlacesRestantes" class="form-control" type="hidden" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Nom" class="col-md-2 control-label"></label>
+            <label asp-for="ID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nom" class="col-md-2 control-label">@SharedLocalizer["Name"]</label>
             <div class="col-md-10">
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Jeu" class="col-md-2 control-label"></label>
+            <label asp-for="Jeu" class="col-md-2 control-label">@SharedLocalizer["Game"]</label>
             <div class="col-md-10">
                 <input asp-for="Jeu" class="form-control" />
                 <span asp-validation-for="Jeu" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Serveur" class="col-md-2 control-label"></label>
+            <label asp-for="Serveur" class="col-md-2 control-label">@SharedLocalizer["Server"]</label>
             <div class="col-md-10">
                 <input asp-for="Serveur" class="form-control" />
                 <span asp-validation-for="Serveur" class="text-danger" />
@@ -38,39 +46,49 @@
             <div class="col-md-offset-2 col-md-10">
                 <div class="checkbox">
                     <input asp-for="Spectateurs" />
-                    <label asp-for="Spectateurs"></label>
+                    <label asp-for="Spectateurs">@SharedLocalizer["Spec"]</label>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="FinInscriptions" class="col-md-2 control-label"></label>
+            <label asp-for="FinInscriptions" class="col-md-2 control-label">@SharedLocalizer["DateEnd"]</label>
             <div class="col-md-10">
                 <input asp-for="FinInscriptions" class="form-control" />
                 <span asp-validation-for="FinInscriptions" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Date" class="col-md-2 control-label"></label>
+            <label asp-for="Date" class="col-md-2 control-label">@SharedLocalizer["Date"]</label>
             <div class="col-md-10">
                 <input asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NombreEquipe" class="col-md-2 control-label"></label>
+            <label asp-for="NombreEquipe" class="col-md-2 control-label">@SharedLocalizer["NumTeam"]</label>
             <div class="col-md-10">
                 <input asp-for="NombreEquipe" class="form-control" />
                 <span asp-validation-for="NombreEquipe" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="NombreJoueursEquipe" class="col-md-2 control-label"></label>
+            <label asp-for="NombreJoueursEquipe" class="col-md-2 control-label">@SharedLocalizer["NumPlayerTeam"]</label>
             <div class="col-md-10">
                 <input asp-for="NombreJoueursEquipe" class="form-control" />
                 <span asp-validation-for="NombreJoueursEquipe" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
+<<<<<<< Updated upstream
+=======
+            <label asp-for="PlacesRestantes" class="col-md-2 control-label">@SharedLocalizer["PlacesLeft"]</label>
+            <div class="col-md-10">
+                <input asp-for="PlacesRestantes" class="form-control" />
+                <span asp-validation-for="PlacesRestantes" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+>>>>>>> Stashed changes
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

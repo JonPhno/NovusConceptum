@@ -1,13 +1,15 @@
 @model IEnumerable<NovusConceptum.Models.TournoisViewModels.TournoisViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = SharedLocalizer["Tournament"];
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@SharedLocalizer["CreateNew"]</a>
 </p>
 <table class="table">
     <thead>
@@ -16,31 +18,31 @@
                 @Html.DisplayNameFor(model => model.ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                @SharedLocalizer["Name"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Jeu)
+                @SharedLocalizer["Game"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Serveur)
+                @SharedLocalizer["Server"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Spectateurs)
+                @SharedLocalizer["Spec"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FinInscriptions)
+                @SharedLocalizer["DateEnd"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @SharedLocalizer["Date"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreEquipe)
+                @SharedLocalizer["NumTeam"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NombreJoueursEquipe)
+                @SharedLocalizer["NumPlayerTeam"]
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PlacesRestantes)
+                @SharedLocalizer["PlacesLeft"]
             </th>
             <th></th>
         </tr>

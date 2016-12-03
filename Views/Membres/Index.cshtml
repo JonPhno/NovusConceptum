@@ -42,7 +42,7 @@
                 @if (User.IsInRole("Administrateur"))
                 {
                     @Html.ActionLink("Delete", "Delete", new { id = item.User.Id }) @:|
-                    @Html.ActionLink("Edit", "Edit", new { id = item.User.Id }) @:|;
+                    @Html.ActionLink("Edit", "Edit", new { id = item.User.Id }) @:|
                 }
                 @Html.ActionLink("Details", "Details", new { id = item.User.Id })
                 

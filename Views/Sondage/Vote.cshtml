@@ -1,14 +1,15 @@
 @model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Vote";
+    ViewData["Title"] = SharedLocalizer["Vote"];
 }
 
-<h2>Vote</h2>
+<h2>@ViewData["Title"]</h2>
 
 <form asp-action="Vote">
     <div class="form-horizontal">
-        <h4>SondageViewModel</h4>
         <hr />
         <input asp-for="ID" class="form-control" type="hidden" />
         <input asp-for="Nom" class="form-control" type="hidden" />
@@ -18,19 +19,31 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Nom)
+                @SharedLocalizer["Name"]
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Nom)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Description)
+                @SharedLocalizer["Descrition"]
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Options)
+                @SharedLocalizer["Date"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dt>
+                @SharedLocalizer["DateEnd"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateFin)
+            </dd>
+            <dt>
+                @SharedLocalizer["Options"]
             </dt>
             <dd>
                 @if (Model.Options != null)
@@ -47,14 +60,14 @@
        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@SharedLocalizer["Save"]" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
 </div>
 
 @section Scripts {

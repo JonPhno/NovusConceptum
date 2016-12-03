@@ -1,4 +1,6 @@
 @model NovusConceptum.Models.TournoisViewModels.TournoisViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
     ViewData["Title"] = "Details";
@@ -17,61 +19,61 @@
             @Html.DisplayFor(model => model.ID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nom)
+            @SharedLocalizer["Name"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nom)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Jeu)
+            @SharedLocalizer["Game"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Jeu)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Serveur)
+            @SharedLocalizer["Server"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Serveur)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Spectateurs)
+            @SharedLocalizer["Spec"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Spectateurs)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FinInscriptions)
+            @SharedLocalizer["DateEnd"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FinInscriptions)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @SharedLocalizer["Date"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NombreEquipe)
+            @SharedLocalizer["NumTeam"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NombreEquipe)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NombreJoueursEquipe)
+            @SharedLocalizer["NumPlayerTeam"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NombreJoueursEquipe)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PlacesRestantes)
+            @SharedLocalizer["PlacesLeft"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PlacesRestantes)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Joueurs)
+            @SharedLocalizer["Players"]
         </dt>
         <dd>
             @foreach (var item in Model.Joueurs)
@@ -82,14 +84,14 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.ID }) | 
-    @if (Model.Joueurs.Any(u=>u.UserName == User.Identity.Name))
+    <a asp-action="Edit\@Model.ID">@SharedLocalizer["Edit"]</a> | 
+    @if (Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
     {
-        @Html.ActionLink("Se désinscrire", "Deregister", new { id = Model.ID })
+        <a asp-action="Deregister\@Model.ID">@SharedLocalizer["Deregister"]</a>
     }
-    @if(!Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
+    @if (!Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
     {
-         @Html.ActionLink("S'inscrire", "Register", new { id = Model.ID })
-	}
-    <a asp-action="Index">Back to List</a>
+        <a asp-action="Register\@Model.ID">@SharedLocalizer["Register"]</a>
+    }
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
 </div>

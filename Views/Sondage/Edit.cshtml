@@ -1,7 +1,9 @@
 @model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = SharedLocalizer["Edit"];
     string o = "";
     foreach (string opt in Model.Options)
     {
@@ -9,54 +11,60 @@
     }
 }
 
-<h2>Edit</h2>
+<h2>@ViewData["Edit"]</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>SondageViewModel</h4>
         <hr />
         <input asp-for="ID" class="form-control" type="hidden" />
         <input asp-for="Options" class="form-control" type="hidden" />
         <input asp-for="Date" class="form-control" type="hidden" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Nom" class="col-md-2 control-label"></label>
+            <label asp-for="Nom" class="col-md-2 control-label">@SharedLocalizer["Name"]</label>
             <div class="col-md-10">
                 <input asp-for="Nom" class="form-control" />
                 <span asp-validation-for="Nom" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <label asp-for="Description" class="col-md-2 control-label">@SharedLocalizer["Description"]</label>
             <div class="col-md-10">
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DateFin" class="col-md-2 control-label"></label>
+            <label asp-for="DateFin" class="col-md-2 control-label">@SharedLocalizer["DateEnd"]</label>
             <div class="col-md-10">
                 <input asp-for="DateFin" class="form-control" />
                 <span asp-validation-for="DateFin" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
+<<<<<<< Updated upstream
             <label asp-for="OptionsString" class="col-md-2 control-label"></label>
             <div class="col-md-10" data-content="o">
                 <input asp-for="OptionsString" class="form-control" />
                 <span asp-validation-for="OptionsString" class="text-danger" />
+=======
+            <label asp-for="Options" class="col-md-2 control-label">@SharedLocalizer["Options"]</label>
+            <div class="col-md-10">
+                <input asp-for="Options" class="form-control" />
+                <span asp-validation-for="Options" class="text-danger" />
+>>>>>>> Stashed changes
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="@SharedLocalizer["Save"]" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
 </div>
 
 @section Scripts {

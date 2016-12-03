@@ -1,13 +1,14 @@
 @model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = SharedLocalizer["Details"];
 }
 
-<h2>Details</h2>
+<h2>@ViewData["Title"]</h2>
 
 <div>
-    <h4>SondageViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,31 +18,31 @@
             @Html.DisplayFor(model => model.ID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Nom)
+            @SharedLocalizer["Name"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nom)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @SharedLocalizer["Descrition"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @SharedLocalizer["Date"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DateFin)
+            @SharedLocalizer["DateEnd"]
         </dt>
         <dd>
             @Html.DisplayFor(model => model.DateFin)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Options)
+            @SharedLocalizer["Options"]
         </dt>
         <dd>
             @if (Model.Options != null)
@@ -57,12 +58,12 @@
 <div>
     @if (Model.Utilisateurs.Any(u => u.UserName == User.Identity.Name))
     {
-        @Html.ActionLink("Results", "Results", new { id = Model.ID })
+        <a asp-action="Results\@Model.ID">@SharedLocalizer["Results"]</a>
     }
     else
     {
-        @Html.ActionLink("Vote", "Vote", new { id = Model.ID })
+        <a asp-action="Vote\@Model.ID">@SharedLocalizer["Vote"]</a>
     }
    |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
 </div>
