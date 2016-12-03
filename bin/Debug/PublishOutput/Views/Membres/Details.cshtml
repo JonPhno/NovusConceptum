@@ -1,0 +1,58 @@
+@model NovusConceptum.Models.MembresViewModels.MembresViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.User.UserName)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.InfoSup.Steam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.InfoSup.Steam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.InfoSup.Blizzard)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.InfoSup.Blizzard)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Roles)
+        </dt>
+        <dd>
+            <p>
+            @foreach (var item in Model.Roles)
+            {
+                @item.Name @:|
+            }
+            </p>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

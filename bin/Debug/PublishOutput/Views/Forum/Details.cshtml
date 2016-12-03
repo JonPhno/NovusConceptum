@@ -1,0 +1,92 @@
+@model NovusConceptum.Models.ForumViewModels.ForumViewModel
+
+@{
+    ViewData["Title"] = Model.Titre;
+}
+
+<h2>@Model.Titre</h2>
+
+<div>
+    <h4>@Model.Description</h4>
+    <hr />
+
+    @Html.ActionLink("Répondre", "CreatePost", new { id = Model.ID })
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:200px">
+                    | Auteur
+                </th>
+                <th style="width:650px">
+                    | Messages
+                </th>
+               
+                @if (User.IsInRole("Administrateur")||
+                    User.IsInRole("Modérateur")||
+                    User.IsInRole("Ange"))
+                {
+                    <th>
+                        | Actions
+                    </th>
+                }
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Posts != null)
+            {
+                @foreach (Post p in Model.Posts)
+                {
+
+                    <tr>
+                        <td>
+                            @if (p.Auteur != null)
+                            {
+                                @p.Auteur.UserName<br />
+
+                                @if (p.Auteur.InfoSup.Image.Data != null)
+                                {
+                                    <img class="image_utilisateur" src="data:@p.Auteur.InfoSup.Image.Type;base64,@Convert.ToBase64String(@p.Auteur.InfoSup.Image.Data)" alt="@p.Auteur.InfoSup.Image.Nom" />
+                                }
+
+                                else
+                                {
+                                    <img class="image_utilisateur" src="~/images/no-image.png" alt="pas d'image" />
+
+                                }
+                            }
+                            else
+                            {
+                                <p>Utilisateur supprimé</p>
+                                <img class="image_utilisateur" src="~/images/no-image.png" alt="pas d'image" />
+
+                            }
+
+                            <br />
+                            @p.Date
+                        </td>
+                        <td>
+                            @p.Message
+                        </td>
+                        <td>
+                            @if (User.IsInRole("Administrateur") ||
+                    User.IsInRole("Modérateur") ||
+                    User.IsInRole("Ange"))
+                            {
+                                @Html.ActionLink("Modifier", "EditPost", new { id = p.ID }) @:|
+                                @Html.ActionLink("Supprimer", "DeletePost", new { id = p.ID }) @:
+                        }
+                        </td>
+
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    @*@Html.ActionLink("Modifier", "Edit", new { id = Model.ID}) |*@
+    <a asp-action="Index">Retour aux sujets</a>
+</div>

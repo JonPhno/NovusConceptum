@@ -1,0 +1,55 @@
+@model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Results"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @SharedLocalizer["Name"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @SharedLocalizer["Descrition"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @SharedLocalizer["Date"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @SharedLocalizer["DateEnd"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateFin)
+        </dd>
+        <dt>
+            @ViewData["Results"]
+        </dt>
+        <dd>
+            @if (Model.Options != null && Model.Choix != null)
+            {
+                for (int i = 0; i <Model.Options.Count; i++)
+                {
+                    @Model.Options[i] @: @Model.Choix[i] <br />
+                     
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
+</div>

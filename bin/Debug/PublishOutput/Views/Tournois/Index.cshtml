@@ -1,0 +1,91 @@
+@model IEnumerable<NovusConceptum.Models.TournoisViewModels.TournoisViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Tournament"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create">@SharedLocalizer["CreateNew"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @SharedLocalizer["Name"]
+            </th>
+            <th>
+                @SharedLocalizer["Game"]
+            </th>
+            <th>
+                @SharedLocalizer["Server"]
+            </th>
+            <th>
+                @SharedLocalizer["Spec"]
+            </th>
+            <th>
+                @SharedLocalizer["DateEnd"]
+            </th>
+            <th>
+                @SharedLocalizer["Date"]
+            </th>
+            <th>
+                @SharedLocalizer["NumTeam"]
+            </th>
+            <th>
+                @SharedLocalizer["NumPlayerTeam"]
+            </th>
+            <th>
+                @SharedLocalizer["PlacesLeft"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jeu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serveur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Spectateurs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinInscriptions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEquipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreJoueursEquipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacesRestantes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.ID}) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

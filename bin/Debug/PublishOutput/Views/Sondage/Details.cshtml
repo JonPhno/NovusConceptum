@@ -1,0 +1,69 @@
+@model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Details"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @SharedLocalizer["Name"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @SharedLocalizer["Descrition"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @SharedLocalizer["Date"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @SharedLocalizer["DateEnd"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateFin)
+        </dd>
+        <dt>
+            @SharedLocalizer["Options"]
+        </dt>
+        <dd>
+            @if (Model.Options != null)
+            {
+                foreach (var item in Model.Options)
+                {
+                    @item<br />
+                }
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (Model.Utilisateurs.Any(u => u.UserName == User.Identity.Name))
+    {
+        <a asp-action="Results\@Model.ID">@SharedLocalizer["Results"]</a>
+    }
+    else
+    {
+        <a asp-action="Vote\@Model.ID">@SharedLocalizer["Vote"]</a>
+    }
+   |
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
+</div>

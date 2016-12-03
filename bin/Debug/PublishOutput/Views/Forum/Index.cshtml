@@ -1,0 +1,78 @@
+@model IEnumerable<NovusConceptum.Models.ForumViewModels.ForumViewModel>
+
+@{
+    ViewData["Title"] = "Forum";
+}
+
+<h2>Forum</h2>
+
+@if (!User.IsInRole("ExclusionForum"))
+{
+<p>
+    @if (User.IsInRole("Administrateur") ||
+                                    User.IsInRole("Modérateur"))
+    {
+        <a asp-action="Create">Créer un nouveau sujet</a>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dernier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreMessages)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.ActionLink(item.Titre, "Details", new { id = item.ID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Auteur.UserName)<br />
+                    @Html.DisplayFor(modelItem => item.DateCréation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dernier.UserName)<br />
+                    @Html.DisplayFor(modelItem => item.DateModifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreMessages)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrateur") ||
+        User.IsInRole("Modérateur"))
+                    {
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.ID }) @:|<br />
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.ID })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <p>Vous n'avez pas accès à cette page</p>
+}

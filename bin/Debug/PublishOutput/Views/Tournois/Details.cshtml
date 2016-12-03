@@ -1,0 +1,97 @@
+@model NovusConceptum.Models.TournoisViewModels.TournoisViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TournoisViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @SharedLocalizer["Name"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @SharedLocalizer["Game"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Jeu)
+        </dd>
+        <dt>
+            @SharedLocalizer["Server"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Serveur)
+        </dd>
+        <dt>
+            @SharedLocalizer["Spec"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Spectateurs)
+        </dd>
+        <dt>
+            @SharedLocalizer["DateEnd"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FinInscriptions)
+        </dd>
+        <dt>
+            @SharedLocalizer["Date"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @SharedLocalizer["NumTeam"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreEquipe)
+        </dd>
+        <dt>
+            @SharedLocalizer["NumPlayerTeam"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreJoueursEquipe)
+        </dd>
+        <dt>
+            @SharedLocalizer["PlacesLeft"]
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PlacesRestantes)
+        </dd>
+        <dt>
+            @SharedLocalizer["Players"]
+        </dt>
+        <dd>
+            @foreach (var item in Model.Joueurs)
+            {
+               @item.UserName;<br />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit\@Model.ID">@SharedLocalizer["Edit"]</a> | 
+    @if (Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
+    {
+        <a asp-action="Deregister\@Model.ID">@SharedLocalizer["Deregister"]</a>
+    }
+    @if (!Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
+    {
+        <a asp-action="Register\@Model.ID">@SharedLocalizer["Register"]</a>
+    }
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
+</div>

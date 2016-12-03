@@ -1,0 +1,59 @@
+@model IEnumerable<NovusConceptum.Models.SondageViewModel.SondageViewModel>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@{
+    ViewData["Title"] = SharedLocalizer["Survey"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create">@SharedLocalizer["CreateNew"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @SharedLocalizer["Name"]
+            </th>
+            <th>
+                @SharedLocalizer["Description"]
+            </th>
+            <th>
+                @SharedLocalizer["Date"]
+            </th>
+            <th>
+                @SharedLocalizer["DateEnd"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.ActionLink(item.Nom, "Details", new { id = item.ID }) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFin)
+            </td>
+            <td>
+                <a asp-action="Edit\@item.ID">@SharedLocalizer["Edit"]</a> |
+                <a asp-action="Delete\@item.ID">@SharedLocalizer["Delete"]</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

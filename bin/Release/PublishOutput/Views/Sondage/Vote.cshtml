@@ -1,0 +1,75 @@
+@model NovusConceptum.Models.SondageViewModel.SondageViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Vote"];
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Vote">
+    <div class="form-horizontal">
+        <hr />
+        <input asp-for="ID" class="form-control" type="hidden" />
+        <input asp-for="Nom" class="form-control" type="hidden" />
+        <input asp-for="Description" class="form-control" type="hidden" />
+        <input asp-for="Date" class="form-control" type="hidden" />
+        <input asp-for="DateFin" class="form-control" type="hidden" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <dl class="dl-horizontal">
+            <dt>
+                @SharedLocalizer["Name"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nom)
+            </dd>
+            <dt>
+                @SharedLocalizer["Descrition"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                @SharedLocalizer["Date"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+            <dt>
+                @SharedLocalizer["DateEnd"]
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateFin)
+            </dd>
+            <dt>
+                @SharedLocalizer["Options"]
+            </dt>
+            <dd>
+                @if (Model.Options != null)
+                {
+                    foreach (var item in Model.Options)
+                    {
+                        <input type="radio" name="selectedOption" value="@item"  /> @item <br>
+                }
+            }
+            </dd>
+        </dl>    
+       
+       
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@SharedLocalizer["Save"]" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">@SharedLocalizer["Back"]</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

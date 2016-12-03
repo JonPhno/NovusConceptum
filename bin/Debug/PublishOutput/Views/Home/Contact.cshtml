@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = SharedLocalizer["Contact"];
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Localizer["Message"]</h3>
+
+<!--<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+    -->
+<p>@Localizer["ContactPara"]<p />
+   <a href=""><strong>William</strong> </a><br />
+   <a href=""><strong>Samuel</strong> </a>
+
+
+
+
+<p>@Localizer["Location"]</p>

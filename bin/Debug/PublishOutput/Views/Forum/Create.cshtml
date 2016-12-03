@@ -1,0 +1,76 @@
+@model NovusConceptum.Models.ForumViewModels.ForumViewModel
+
+@{
+    ViewData["Title"] = "Créer un sujet";
+}
+
+<h2>Sujet</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Créer un nouveau sujet</h4>
+        <hr />
+        <div class="form-group">
+            <label asp-for="Titre" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Titre" class="form-control" />
+                <span asp-validation-for="Titre" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PremierMessage" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PremierMessage" class="form-control" />
+                <span asp-validation-for="PremierMessage" class="text-danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="DateCréation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateCréation" class="form-control" />
+                <span asp-validation-for="DateCréation" class="text-danger" />
+            </div>
+        </div>*@
+        @*<div class="form-group">
+            <label asp-for="Dernier" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Dernier" class="form-control" />
+                <span asp-validation-for="Dernier" class="text-danger" />
+            </div>
+        </div>*@
+        @*<div class="form-group">
+            <label asp-for="DateModifier" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateModifier" class="form-control" />
+                <span asp-validation-for="DateModifier" class="text-danger" />
+            </div>
+        </div>*@
+        @*<div class="form-group">
+            <label asp-for="NombreMessages" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="NombreMessages" class="form-control" />
+                <span asp-validation-for="NombreMessages" class="text-danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Retour a la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

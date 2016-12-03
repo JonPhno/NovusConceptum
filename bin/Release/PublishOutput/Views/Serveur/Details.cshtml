@@ -1,0 +1,93 @@
+@model NovusConceptum.Models.ServeurViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ServeurViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ouvert)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ouvert)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Version)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Version)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.JoueursMax)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JoueursMax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Joueurs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Joueurs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        @if (User.IsInRole("Administrateur"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.AdresseIp)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AdresseIp)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Port)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Port)
+        </dd>
+        @if (User.IsInRole("Administrateur"))
+        {
+            <dt>
+                Controles
+            </dt>
+            <dd>
+                @Html.ActionLink("Start", "StartVM", new { id = Model.ID })<br />
+                @Html.ActionLink("Save", "SaveVM", new { id = Model.ID })<br />
+                @Html.ActionLink("Stop", "StopVM", new { id = Model.ID })<br />
+                @Html.ActionLink("Reset", "ResetVM", new { id = Model.ID })<br />
+                @Html.ActionLink("Resume", "ResumeVM", new { id = Model.ID })<br />
+                @Html.ActionLink("ACPI shutdown", "ACPIOffVM", new { id = Model.ID })<br />
+
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+@if (User.IsInRole("Administrateur"))
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) @:|
+}
+    <a asp-action="Index">Back to List</a>
+</div>
