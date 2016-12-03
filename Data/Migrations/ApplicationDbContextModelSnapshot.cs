@@ -252,8 +252,6 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AdminId");
-
                     b.Property<string>("AdresseIp");
 
                     b.Property<string>("Description");
@@ -271,8 +269,6 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<string>("Version");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AdminId");
 
                     b.ToTable("Serveurs");
                 });
@@ -434,13 +430,6 @@ namespace NovusConceptum.Data.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("SujetID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("NovusConceptum.Models.Serveur", b =>
-                {
-                    b.HasOne("NovusConceptum.Models.ApplicationUser", "Admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId");
                 });
 
             modelBuilder.Entity("NovusConceptum.Models.Sujet", b =>

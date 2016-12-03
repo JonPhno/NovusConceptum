@@ -16,6 +16,6 @@ namespace NovusConceptum.Models
         public string Description { get; set; }
         public string AdresseIp { get; set; }
         public int Port { get; set; }
-        public ApplicationUser Admin { get; set; }
+       
     }
 }

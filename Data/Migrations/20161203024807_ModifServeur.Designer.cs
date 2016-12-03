@@ -8,8 +8,8 @@ using NovusConceptum.Data;
 namespace NovusConceptum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161202203750_ModifServeur2")]
-    partial class ModifServeur2
+    [Migration("20161203024807_ModifServeur")]
+    partial class ModifServeur
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -253,8 +253,6 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AdminId");
-
                     b.Property<string>("AdresseIp");
 
                     b.Property<string>("Description");
@@ -272,8 +270,6 @@ namespace NovusConceptum.Data.Migrations
                     b.Property<string>("Version");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AdminId");
 
                     b.ToTable("Serveurs");
                 });
@@ -435,13 +431,6 @@ namespace NovusConceptum.Data.Migrations
                         .WithMany("Posts")
                         .HasForeignKey("SujetID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("NovusConceptum.Models.Serveur", b =>
-                {
-                    b.HasOne("NovusConceptum.Models.ApplicationUser", "Admin")
-                        .WithMany()
-                        .HasForeignKey("AdminId");
                 });
 
             modelBuilder.Entity("NovusConceptum.Models.Sujet", b =>

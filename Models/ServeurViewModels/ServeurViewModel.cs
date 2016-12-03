@@ -16,7 +16,6 @@ namespace NovusConceptum.Models
         public string Description { get; set; }
         public string AdresseIp { get; set; }
         public int Port { get; set; }
-        public ApplicationUser Admin { get; set; }
 
         public ServeurViewModel()
         {
@@ -34,10 +33,6 @@ namespace NovusConceptum.Models
             Description = s.Description;
             AdresseIp = s.AdresseIp;
             Port = s.Port;
-            if (s.Admin != null)
-            {
-                Admin = s.Admin;
-            }
         }
     }
 }

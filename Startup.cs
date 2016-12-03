@@ -63,7 +63,8 @@ namespace NovusConceptum
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddMvc()
              .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-             .AddDataAnnotationsLocalization();
+             .AddDataAnnotationsLocalization();
+
 
             services.Configure<RequestLocalizationOptions>(
                  options =>
@@ -113,7 +114,8 @@ namespace NovusConceptum
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             var locOptions =
                 app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-            app.UseRequestLocalization(locOptions.Value);
+            app.UseRequestLocalization(locOptions.Value);
+
 
             app.UseMvc(routes =>
             {
@@ -122,10 +124,10 @@ namespace NovusConceptum
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
-            //SeedData.AjouterUsagers();
-            //SeedData.AjouterRoles();
-            //SeedData.AssocierRolesUsagers();
+            SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
+            SeedData.AjouterUsagers();
+            SeedData.AjouterRoles();
+            SeedData.AssocierRolesUsagers();
 
 
         }
