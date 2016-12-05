@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Options;
+using Sakura.AspNetCore.Mvc;
 
 namespace NovusConceptum
 {
@@ -74,12 +75,17 @@ namespace NovusConceptum
                      new CultureInfo("fr")
                  };
 
-                 options.DefaultRequestCulture =
-                    new RequestCulture(culture: "fr", uiCulture: "fr");
-                 options.SupportedCultures = supportedCultures;
-                 options.SupportedUICultures = supportedCultures;
+                     options.DefaultRequestCulture =
+                        new RequestCulture(culture: "fr", uiCulture: "fr");
+                     options.SupportedCultures = supportedCultures;
+                     options.SupportedUICultures = supportedCultures;
                  });
 
+            services.AddBootstrapPagerGenerator(options =>
+            {
+                // Use default pager options.
+                options.ConfigureDefault();
+            });
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

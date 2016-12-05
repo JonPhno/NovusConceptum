@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using NovusConceptum.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Sakura.AspNetCore;
 
 namespace NovusConceptum.Controllers
 {
@@ -25,17 +26,40 @@ namespace NovusConceptum.Controllers
 
         [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Membres
-        public ActionResult Index()
+        public ActionResult Index(string ordretri = null,
+                                  string motrecherche = null,
+                                  int page = 1)
         {
             List<MembresViewModel> list_mvm = new List<MembresViewModel>();
-            var membres = _context.Users.Include(isu => isu.InfoSup).ThenInclude(i => i.Image);
+            var membres = _context.Users.Include(isu => isu.InfoSup).ThenInclude(i => i.Image)
+                .OrderBy<ApplicationUser, object>(delegate (ApplicationUser u)
+                {
+                    if (ordretri != null)
+                    {
+                        if (ordretri == "UserName")
+                            return u.UserName;
+                    }
+                    return u.Id;
+                })
+                .Where<ApplicationUser>(delegate (ApplicationUser u)
+                {
+                    if (!String.IsNullOrWhiteSpace(motrecherche))
+                    {
+                        return u.UserName.ToUpper().Contains(motrecherche.ToUpper());
+                    }
+                    return true;
+                });
 
             foreach (ApplicationUser user in membres)
             {
                 list_mvm.Add(new MembresViewModel(user));
             }
 
-            return View(list_mvm);
+            if (HttpContext.Request.IsAjaxRequest())
+                return PartialView("_IndexListeMembresPartial", list_mvm.ToPagedList<MembresViewModel>(5, page));
+            else
+                return View(list_mvm.ToPagedList<MembresViewModel>(5, page));
+
         }
 
         [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
