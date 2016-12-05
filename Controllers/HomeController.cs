@@ -55,19 +55,19 @@ namespace NovusConceptum.Controllers
         }
         public IActionResult Execute()
         {
-            string batchFileLocation = @"Batch\\test.bat";
-            Process p = new Process();
-            var startinfo = new ProcessStartInfo(batchFileLocation," asd ");
-            p.StartInfo = startinfo;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
-            startinfo.RedirectStandardOutput = true;
-            startinfo.UseShellExecute = false;
-            p.Start();
-            string s = p.StandardOutput.ReadToEnd();
-            ViewData["test"] = s;
-            return View("Test");
+            //string batchFileLocation = @"Batch\\test.bat";
+            //Process p = new Process();
+            //var startinfo = new ProcessStartInfo(batchFileLocation," asd ");
+            //p.StartInfo = startinfo;
+            //p.StartInfo.UseShellExecute = false;
+            //p.StartInfo.UserName = "William";
+            //p.StartInfo.PasswordInClearText = "allo";
+            //startinfo.RedirectStandardOutput = true;
+            //startinfo.UseShellExecute = false;
+            //p.Start();
+            //string s = p.StandardOutput.ReadToEnd();
+            //ViewData["test"] = s;
+            return View("Index");
         }
 
         private void P_OutputDataReceived(object sender, DataReceivedEventArgs e)

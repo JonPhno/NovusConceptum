@@ -60,4 +60,6 @@ img[class="image_utilisateur"]
     height: 150px;
 }
 
-
+body[class="fontcolor"] {
+    color: whitesmoke;
+}

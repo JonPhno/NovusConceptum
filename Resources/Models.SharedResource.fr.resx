@@ -223,6 +223,6 @@
     <value>Tournois</value>
   </data>
   <data name="Vote" xml:space="preserve">
-    <value>Voté</value>
+    <value>Voter</value>
   </data>
 </root>

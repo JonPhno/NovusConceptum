@@ -27,7 +27,7 @@
 
 
 </head>
-<body background="~/images/logo.png" style="background-color:#494a67">
+<body  background="~/images/logo.png" style="color:whitesmoke; background-color:#494a67">
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#28294C">
         <div class="container" >
             <div class="navbar-header" >
@@ -49,7 +49,6 @@
                     <li><a asp-area="" asp-controller="Tournois" asp-action="Index">@SharedLocalizer["Tournament"]</a></li>
                     <li><a asp-area="" asp-controller="Sondage" asp-action="Index">@SharedLocalizer["Survey"]</a></li>
                     <li><a asp-area="" asp-controller="Serveur" asp-action="Index">@SharedLocalizer["Servers"]</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Execute">@SharedLocalizer["test"]</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

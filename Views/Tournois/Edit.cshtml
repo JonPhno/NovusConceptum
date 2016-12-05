@@ -15,13 +15,6 @@
         <input asp-for="PlacesRestantes" class="form-control" type="hidden" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="ID" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="Nom" class="col-md-2 control-label">@SharedLocalizer["Name"]</label>
             <div class="col-md-10">
                 <input asp-for="Nom" class="form-control" />
@@ -79,23 +72,12 @@
             </div>
         </div>
         <div class="form-group">
-<<<<<<< Updated upstream
-=======
-            <label asp-for="PlacesRestantes" class="col-md-2 control-label">@SharedLocalizer["PlacesLeft"]</label>
-            <div class="col-md-10">
-                <input asp-for="PlacesRestantes" class="form-control" />
-                <span asp-validation-for="PlacesRestantes" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
->>>>>>> Stashed changes
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

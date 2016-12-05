@@ -54,7 +54,7 @@ namespace NovusConceptum.Controllers
                 // TODO: Add insert logic here
                 Serveur s = new Serveur();
                 TryUpdateModelAsync(s);
-               
+
                 _context.Serveurs.Add(s);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
@@ -127,8 +127,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm);
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -141,11 +141,11 @@ namespace NovusConceptum.Controllers
             string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();
             string NomVm = _context.Serveurs.SingleOrDefault(se => se.ID == id).Nom;
-            var startinfo = new ProcessStartInfo(batchFileLocation,NomVm + " " + "savestate");
+            var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "savestate");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -161,8 +161,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "poweroff");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -179,8 +179,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "reset");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -197,8 +197,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "resume");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -209,16 +209,14 @@ namespace NovusConceptum.Controllers
 
         public ActionResult ACPIOffVM(int id)
         {
-            string batchFileLocation = @"Batch\\test.bat";
-          //  string batchFileLocation = @"Batch\\controlvm.bat";
+            string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();
             string NomVm = _context.Serveurs.SingleOrDefault(se => se.ID == id).Nom;
-            var startinfo = new ProcessStartInfo(batchFileLocation);
-           // var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "acpipowerbutton");
+            var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "acpipowerbutton");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "William";
-            p.StartInfo.PasswordInClearText = "allo";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();

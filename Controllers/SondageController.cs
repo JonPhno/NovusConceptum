@@ -55,9 +55,10 @@ namespace NovusConceptum.Controllers
                 // TODO: Add insert logic here
                 Sondage sondage = new Sondage();
                 TryUpdateModelAsync(sondage);
-                sondage.Options = svm.OptionsString;
+                sondage.Options = svm.Options[1];
+                string[] optionsSplit = svm.Options[1].Split(',');
                 sondage.Date = DateTime.Now;
-                int iNombreOptions = sondage.Options.Count();
+                int iNombreOptions = optionsSplit.Count();
                 string choix = "0";
                 for (int i = 0; i < iNombreOptions; i++)
                 {
@@ -122,11 +123,13 @@ namespace NovusConceptum.Controllers
         {
             try
             {
-                _context.Sondages.Remove(_context.Sondages.SingleOrDefault(s => s.ID == id));
+               Sondage sondage = _context.Sondages.FirstOrDefault(s => s.ID == id);
+                sondage.Utilisateurs = null;
+                _context.Sondages.Remove(sondage);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -146,7 +149,7 @@ namespace NovusConceptum.Controllers
             {
                 Sondage sondage = _context.Sondages.Include(s => s.Utilisateurs).SingleOrDefault(so => so.ID == id);
 
-                if (!sondage.Utilisateurs.Any(u => u.UserName == User.Identity.Name) && sondage.Date > DateTime.Now)
+                if (!sondage.Utilisateurs.Any(u => u.UserName == User.Identity.Name) && sondage.DateFin > DateTime.Now)
                 {
 
                     string[] options = sondage.Options.Split(',');
