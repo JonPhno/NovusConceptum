@@ -8,6 +8,7 @@ using NovusConceptum.Models.TournoisViewModels;
 using NovusConceptum.Data;
 using NovusConceptum.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -18,6 +19,7 @@ namespace NovusConceptum.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Tournois
         public ActionResult Index()
         {
@@ -32,6 +34,7 @@ namespace NovusConceptum.Controllers
 
             return View(liste_tm);
         }
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
 
         // GET: Tournois/Details/5
         public ActionResult Details(int id)
@@ -39,6 +42,7 @@ namespace NovusConceptum.Controllers
             TournoisViewModel tournoisvm = new TournoisViewModel(_context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id));
             return View(tournoisvm);
         }
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
 
         // GET: Tournois/Create
         public ActionResult Create()
@@ -49,6 +53,7 @@ namespace NovusConceptum.Controllers
             return View(tournoisvm);
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // POST: Tournois/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,6 +76,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Tournois/Edit/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(int id)
         {
             TournoisViewModel TournoisVM = new TournoisViewModel(_context.Tournois.Include(t=>t.Joueurs).SingleOrDefault(s => s.ID == id));
@@ -80,6 +86,7 @@ namespace NovusConceptum.Controllers
         // POST: Tournois/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(int id, TournoisViewModel tournoisModel)
         {
             try
@@ -104,6 +111,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Tournois/Delete/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id)
         {
             TournoisViewModel TournoisVM = new TournoisViewModel(_context.Tournois.SingleOrDefault(s => s.ID == id));
@@ -113,6 +121,7 @@ namespace NovusConceptum.Controllers
         // POST: Tournois/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
@@ -129,6 +138,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Tournois/Register/5
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Register(int id)
         {
             Tournois tournois = _context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id);
@@ -143,6 +153,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Tournois/Register/5
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Deregister(int id)
         {
             Tournois tournois = _context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id);

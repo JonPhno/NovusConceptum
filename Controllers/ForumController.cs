@@ -19,7 +19,7 @@ namespace NovusConceptum.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
+        //[Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Forum
         public ActionResult Index()
         {
@@ -37,7 +37,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Forum/Details/5
-        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
+      //  [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Details(int id)
         {
             ForumViewModel forumVM = new ForumViewModel(_context.Sujets

@@ -8,6 +8,7 @@ using NovusConceptum.Data;
 using Microsoft.EntityFrameworkCore;
 using NovusConceptum.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -39,6 +40,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Serveur/Create
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +49,7 @@ namespace NovusConceptum.Controllers
         // POST: Serveur/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -66,6 +69,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Serveur/Edit/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(int id)
         {
             ServeurViewModel serveur = new ServeurViewModel(_context.Serveurs.FirstOrDefault(se => se.ID == id));
@@ -74,6 +78,7 @@ namespace NovusConceptum.Controllers
 
         // POST: Serveur/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
@@ -93,6 +98,8 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Serveur/Delete/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
+      //  [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Delete(int id)
         {
             ServeurViewModel serveur = new ServeurViewModel(_context.Serveurs.FirstOrDefault(se => se.ID == id));
@@ -102,6 +109,7 @@ namespace NovusConceptum.Controllers
         // POST: Serveur/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
@@ -118,7 +126,7 @@ namespace NovusConceptum.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public IActionResult StartVM(int id)
         {
             string batchFileLocation = @"Batch\\startvm.bat";
@@ -136,6 +144,7 @@ namespace NovusConceptum.Controllers
             ViewData["output"] = sOutput;
             return View("Output");
         }
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public IActionResult SaveVm(int id)
         {
             string batchFileLocation = @"Batch\\controlvm.bat";
@@ -153,7 +162,8 @@ namespace NovusConceptum.Controllers
             ViewData["output"] = sOutput;
             return View("Output");
         }
-        public ActionResult StopVM(int id)
+        [Authorize(Roles = "Administrateur,Modérateur")]
+        public IActionResult StopVM(int id)
         {
             string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();
@@ -171,7 +181,8 @@ namespace NovusConceptum.Controllers
             return View("Output");
         }
 
-        public ActionResult ResetVM(int id)
+        [Authorize(Roles = "Administrateur,Modérateur")]
+        public IActionResult ResetVM(int id)
         {
             string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();
@@ -189,7 +200,8 @@ namespace NovusConceptum.Controllers
             return View("Output");
         }
 
-        public ActionResult ResumeVM(int id)
+        [Authorize(Roles = "Administrateur,Modérateur")]
+        public IActionResult ResumeVM(int id)
         {
             string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();
@@ -207,7 +219,8 @@ namespace NovusConceptum.Controllers
             return View("Output");
         }
 
-        public ActionResult ACPIOffVM(int id)
+        [Authorize(Roles = "Administrateur,Modérateur")]
+        public IActionResult ACPIOffVM(int id)
         {
             string batchFileLocation = @"Batch\\controlvm.bat";
             Process p = new Process();

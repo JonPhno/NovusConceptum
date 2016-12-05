@@ -10,12 +10,17 @@ using System.Net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization;
+using NovusConceptum.Data;
 
 namespace NovusConceptum.Controllers
 {
     public class HomeController : Controller
     {
-        private string _sOut;
+        ApplicationDbContext _context;
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -31,7 +36,8 @@ namespace NovusConceptum.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Comment nous contacter?";
-
+            ViewData["will"] = _context.Users.SingleOrDefault(u => u.UserName == "willp3").Id;
+            ViewData["sam"] = _context.Users.SingleOrDefault(u => u.UserName == "Angela").Id;
             return View();
         }
 
@@ -72,7 +78,7 @@ namespace NovusConceptum.Controllers
 
         private void P_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            _sOut += e.Data;
+           // _sOut += e.Data;
         }
 
         public IActionResult Online()

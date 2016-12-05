@@ -16,8 +16,10 @@
 </address>
     -->
 <p>@Localizer["ContactPara"]<p />
-   <a href=""><strong>William</strong> </a><br />
-   <a href=""><strong>Samuel</strong> </a>
+
+@Html.ActionLink("William", "Details", "Membres", new { id = ViewData["will"] }, null)<br />
+@Html.ActionLink("Samuel", "Details", "Membres", new { id = ViewData["will"] }, null)
+
 
 
 

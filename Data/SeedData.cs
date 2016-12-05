@@ -46,9 +46,9 @@ namespace NovusConceptum.Data
                 },
                 new ApplicationUser() //Cet utilisateur est banni du forum
                 {
-                    UserName = "Willp3",
+                    UserName = "willp3",
                     PasswordHash = "Will123!",
-                    Email = "willp3@novusconceptum.com",
+                    Email = "william.pitre97@hotmail.com",
                     InfoSup = new AspNetUserInfoSup()
                     {
                         Roles = new List<IdentityRole>(),
@@ -160,12 +160,12 @@ namespace NovusConceptum.Data
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.Single(u => u.Email == "willp3@novusconceptum.com").Id,
+                    UserId = Context.Users.Single(u => u.Email == "william.pitre97@hotmail.com").Id,
                     RoleId = Context.Roles.Single(r => r.Name == "Utilisateur").Id
                 },
                 new IdentityUserRole<string>()
                 {
-                    UserId = Context.Users.Single(u => u.Email == "willp3@novusconceptum.com").Id,
+                    UserId = Context.Users.Single(u => u.Email == "william.pitre97@hotmail.com").Id,
                     RoleId = Context.Roles.Single(r => r.Name == "ExclusionForum").Id
                 }
             };

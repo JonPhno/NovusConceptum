@@ -8,6 +8,7 @@ using NovusConceptum.Data;
 using NovusConceptum.Models.SondageViewModel;
 using Microsoft.EntityFrameworkCore;
 using NovusConceptum.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -33,12 +34,14 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Sondage/Details/5
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Details(int id)
         {
             SondageViewModel s = new SondageViewModel(_context.Sondages.Include(u => u.Utilisateurs).SingleOrDefault(so => so.ID == id));
             return View(s);
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Sondage/Create
         public ActionResult Create()
         {
@@ -48,6 +51,7 @@ namespace NovusConceptum.Controllers
         // POST: Sondage/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Create(SondageViewModel svm)
         {
             try
@@ -74,7 +78,7 @@ namespace NovusConceptum.Controllers
                 return View();
             }
         }
-
+        [Authorize(Roles = "Administrateur,Modérateur")]
         // GET: Sondage/Edit/5
         public ActionResult Edit(int id)
         {
@@ -90,6 +94,7 @@ namespace NovusConceptum.Controllers
         // POST: Sondage/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Edit(int id, SondageViewModel svm)
         {
             try
@@ -110,6 +115,7 @@ namespace NovusConceptum.Controllers
         }
 
         // GET: Sondage/Delete/5
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id)
         {
             SondageViewModel sondagevm = new SondageViewModel(_context.Sondages.Include(s => s.Utilisateurs).SingleOrDefault(so => so.ID == id));
@@ -119,6 +125,7 @@ namespace NovusConceptum.Controllers
         // POST: Sondage/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
@@ -135,6 +142,7 @@ namespace NovusConceptum.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Vote(int id)
         {
             SondageViewModel s = new SondageViewModel(_context.Sondages.Include(u => u.Utilisateurs).SingleOrDefault(so => so.ID == id));
@@ -143,6 +151,7 @@ namespace NovusConceptum.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Vote(int id, string selectedOption)
         {
             try
@@ -180,6 +189,7 @@ namespace NovusConceptum.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Results(int id)
         {
             SondageViewModel s = new SondageViewModel(_context.Sondages.Include(u => u.Utilisateurs).SingleOrDefault(so => so.ID == id));

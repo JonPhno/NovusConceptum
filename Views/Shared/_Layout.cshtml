@@ -27,17 +27,17 @@
 
 
 </head>
-<body  background="~/images/logo.png" style="color:whitesmoke; background-color:#494a67">
+<body background="~/images/logo.png" style="color:whitesmoke; background-color:#494a67">
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#28294C">
-        <div class="container" >
-            <div class="navbar-header" >
+        <div class="container">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"  style="padding: 0px 0px 0px 0px; margin-left:0px"><img src="~/favicon.ico" alt="Acceuil" height="100%" width="auto" /></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="padding: 0px 0px 0px 0px; margin-left:0px"><img src="~/favicon.ico" alt="Acceuil" height="100%" width="auto" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -45,10 +45,14 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">@SharedLocalizer["About"]</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">@SharedLocalizer["Contact"]</a></li>
                     <li><a asp-area="" asp-controller="Forum" asp-action="Index">@SharedLocalizer["Forums"]</a></li>
-                    <li><a asp-area="" asp-controller="Membres" asp-action="Index">@SharedLocalizer["Members"]</a></li>
-                    <li><a asp-area="" asp-controller="Tournois" asp-action="Index">@SharedLocalizer["Tournament"]</a></li>
-                    <li><a asp-area="" asp-controller="Sondage" asp-action="Index">@SharedLocalizer["Survey"]</a></li>
-                    <li><a asp-area="" asp-controller="Serveur" asp-action="Index">@SharedLocalizer["Servers"]</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Membres" asp-action="Index">@SharedLocalizer["Members"]</a></li>
+                        <li><a asp-area="" asp-controller="Tournois" asp-action="Index">@SharedLocalizer["Tournament"]</a></li>
+                        <li><a asp-area="" asp-controller="Sondage" asp-action="Index">@SharedLocalizer["Survey"]</a></li>
+                        <li><a asp-area="" asp-controller="Serveur" asp-action="Index">@SharedLocalizer["Servers"]</a></li>
+                    }
+                    
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
