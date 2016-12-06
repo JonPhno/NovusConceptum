@@ -44,18 +44,6 @@ namespace NovusConceptum.Data
                     }
 
                 },
-                new ApplicationUser() //Cet utilisateur est banni du forum
-                {
-                    UserName = "willp3",
-                    PasswordHash = "Will123!",
-                    Email = "william.pitre97@hotmail.com",
-                    InfoSup = new AspNetUserInfoSup()
-                    {
-                        Roles = new List<IdentityRole>(),
-                        Image = new Image()
-                    }
-
-                },
                 new ApplicationUser() //Cet utilisateur aura 2 roles.
                 {
                     UserName = "Angela",
@@ -157,17 +145,7 @@ namespace NovusConceptum.Data
                 {
                     UserId = Context.Users.Single(u => u.Email == "mod@novusconceptum.com").Id,
                     RoleId = Context.Roles.Single(r => r.Name == "Modérateur").Id
-                },
-                new IdentityUserRole<string>()
-                {
-                    UserId = Context.Users.Single(u => u.Email == "william.pitre97@hotmail.com").Id,
-                    RoleId = Context.Roles.Single(r => r.Name == "Utilisateur").Id
-                },
-                new IdentityUserRole<string>()
-                {
-                    UserId = Context.Users.Single(u => u.Email == "william.pitre97@hotmail.com").Id,
-                    RoleId = Context.Roles.Single(r => r.Name == "ExclusionForum").Id
-                }
+                }                
             };
 
             //Save

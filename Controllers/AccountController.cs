@@ -12,6 +12,7 @@ using NovusConceptum.Models;
 using NovusConceptum.Models.AccountViewModels;
 using NovusConceptum.Services;
 using NovusConceptum.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace NovusConceptum.Controllers
 {
@@ -117,22 +118,25 @@ namespace NovusConceptum.Controllers
                     {
                         user.InfoSup = new AspNetUserInfoSup();
                         user.InfoSup.Image = new Image();
-                        
                         user.InfoSup.Image.Nom = model.Fichier.FileName;
                         user.InfoSup.Image.Type = model.Fichier.ContentType;
                         user.InfoSup.Image.Taille = (int)model.Fichier.Length;
-
-
                         user.InfoSup.Image.Data = new byte[user.InfoSup.Image.Taille];
                         var reader = model.Fichier.OpenReadStream();
                         await reader.ReadAsync(user.InfoSup.Image.Data, 0, user.InfoSup.Image.Taille);
                         reader.Dispose();
-
+                        
                         user.InfoSup.User = user;
                         user.InfoSup.UserID = user.Id;
 
                         _context.SaveChanges();
-
+                        IdentityUserRole<string> ur = new IdentityUserRole<string>()
+                        {
+                            UserId = _context.Users.Single(u => u.UserName == user.UserName).Id,
+                            RoleId = _context.Roles.Single(r => r.Name == "Utilisateur").Id
+                        };
+                        _context.UserRoles.Add(ur);
+                        _context.SaveChanges();
                     }
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link

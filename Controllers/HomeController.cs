@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization;
 using NovusConceptum.Data;
+using System.Text;
 
 namespace NovusConceptum.Controllers
 {
@@ -55,10 +56,7 @@ namespace NovusConceptum.Controllers
             return View();
         }
 
-        public IActionResult Test()
-        {
-            return View();
-        }
+
         public IActionResult Execute()
         {
             //string batchFileLocation = @"Batch\\test.bat";
@@ -81,37 +79,6 @@ namespace NovusConceptum.Controllers
            // _sOut += e.Data;
         }
 
-        public IActionResult Online()
-        {
-
-            //Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            //var ip = IPAddress.Parse("192.168.0.117");
-            //var point = new IPEndPoint(ip, 25565);
-            //sock.Bind(point);
-            //sock.Listen(10);
-           //TcpClient c = new TcpClient();
-           // UdpClient u = new UdpClient();
-            //bool b;
-            //try
-            //{
-              //  u.
-              //c.ConnectAsync("192.168.0.117", 25565);
-            //    b = c.Connected;
-            //    c.Dispose();
-
-            //}
-            //catch (Exception)
-            //{
-            //    b = false;
-            //}
-            //ViewData["Title"] = b.ToString();
-
-
-            // jvais essayer de faire un petit programme pour interroger la bd qui va update
-            // l'état du serveur 
-
-            return View();
-        }
 
         [HttpPost]
         public IActionResult SetLanguage(string culture, string returnUrl)
