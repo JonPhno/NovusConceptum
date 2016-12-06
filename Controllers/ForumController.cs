@@ -47,7 +47,7 @@ namespace NovusConceptum.Controllers
 
             return View(forumVM);
         }
-        [Authorize(Roles = "Administrateur,Modérateur")]
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         // GET: Forum/Create
         public ActionResult Create()
         {
@@ -57,7 +57,7 @@ namespace NovusConceptum.Controllers
         // POST: Forum/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrateur,Modérateur")]
+        [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
         public ActionResult Create(IFormCollection collection)
         {
             try

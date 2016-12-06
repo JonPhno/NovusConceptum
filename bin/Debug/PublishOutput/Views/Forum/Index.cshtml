@@ -9,8 +9,7 @@
 @if (!User.IsInRole("ExclusionForum"))
 {
 <p>
-    @if (User.IsInRole("Administrateur") ||
-                                    User.IsInRole("Modérateur"))
+    @if (User.Identity.IsAuthenticated)
     {
         <a asp-action="Create">Créer un nouveau sujet</a>
     }

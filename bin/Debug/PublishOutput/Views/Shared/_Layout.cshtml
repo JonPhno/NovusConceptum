@@ -83,7 +83,16 @@
             });
             discordWidget.render();
         </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
     </environment>
+
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -94,6 +103,21 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/discord-widget/1.0/discord-widget.min.js"></script>
+        <script type="text/javascript">
+            discordWidget.init({
+                serverId: '255373204325924867',
+                title: 'NovusConceptum',
+                join: true,
+                alphabetical: false,
+                theme: 'dark',
+                hideChannels: [],
+                showAllUsers: true,
+                allUsersDefaultState: true,
+                showNick: false
+            });
+            discordWidget.render();
+        </script>
     </environment>
 
 
