@@ -81,15 +81,18 @@ namespace NovusConceptum
                      options.SupportedUICultures = supportedCultures;
                  });
 
-            services.AddBootstrapPagerGenerator(options =>
-            {
-                // Use default pager options.
-                options.ConfigureDefault();
-            });
+            
+
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            services.AddBootstrapPagerGenerator(options =>
+            {
+                // Use default pager options.
+                options.ConfigureDefault();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

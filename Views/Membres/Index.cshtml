@@ -8,6 +8,14 @@
 
 }
 
+@section scripts {
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    </environment> }
+
 <h2>Membres</h2>
 
 <p>
@@ -15,11 +23,7 @@
 </p>
 
 <div class="row">
-    <form class="form-inline" asp-action="Index"
-            data-ajax="true"
-            data-ajax-method="GET"
-            data-ajax-mode="replace"
-            data-ajax-update=".ListeMembres">
+    <form class="form-inline" asp-action="Index" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update=".Membres">
         <div class="col-md-6">
             Tri:
             <select name="ordretri" asp-items="@liste_ordre" class="form-control"></select>
@@ -36,12 +40,3 @@
 
 @Html.Partial("_IndexListeMembresPartial", Model)
 
-
-@section scripts {
-    <environment names="Development">
-        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
-    </environment>
-}

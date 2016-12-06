@@ -1,53 +1,42 @@
-@model IEnumerable<NovusConceptum.Models.MembresViewModels.MembresViewModel>
+@model IPagedList< NovusConceptum.Models.MembresViewModels.MembresViewModel>
+@using Sakura.AspNetCore
+@addTagHelper *, Sakura.AspNetCore.Mvc.PagedList
 
 @{
     ViewData["Title"] = "Index";
+    SelectList liste_ordre = new SelectList(new string[] { "ID", "UserName" }, "ID");
+
 }
+
+@section scripts {
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    </environment> }
 
 <h2>Membres</h2>
 
 <p>
     Liste des membres du site...
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.InfoSup.Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserName)
-            </td>
-            <td>
-                @if (item.User.InfoSup.Image.Data != null)
-                {
-                    <img class="image_utilisateur" src="data:@item.User.InfoSup.Image.Type;base64,@Convert.ToBase64String(@item.User.InfoSup.Image.Data)" alt="@item.User.InfoSup.Image.Nom" />
-                }
-                else
-                {
-                    <img class="image_utilisateur" src="~/images/no-image.png" alt="pas d'image" />
 
-                }
-            </td>
-            <td>
-                @if (User.IsInRole("Administrateur"))
-                {
-                    @Html.ActionLink("Delete", "Delete", new { id = item.User.Id }) @:|
-                    @Html.ActionLink("Edit", "Edit", new { id = item.User.Id }) @:|
-                }
-                @Html.ActionLink("Details", "Details", new { id = item.User.Id })
-                
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <form class="form-inline" asp-action="Index" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update=".Membres">
+        <div class="col-md-6">
+            Tri:
+            <select name="ordretri" asp-items="@liste_ordre" class="form-control"></select>
+            <input type="submit" value="Trier" class="btn btn-default btn-primary" />
+        </div>
+        <div class="col-md-6 text-right">
+            Rechercher:
+            <input type="text" name="motrecherche" class="form-control">
+            <input type="submit" value="Rechercher" class="btn btn-default btn-primary" />
+
+        </div>
+    </form>
+</div>
+
+@Html.Partial("_IndexListeMembresPartial", Model)
+
