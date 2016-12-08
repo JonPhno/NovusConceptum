@@ -10,7 +10,8 @@ namespace NovusConceptum.Models
     {
         static public bool IsAjaxRequest(this HttpRequest request)
         {
-            if (request.Headers != null) return request.Headers["X-Requested-With"] == "XMLHttpRequest";
+            if (request.Headers != null)
+                return request.Headers["X-Requested-With"] == "XMLHttpRequest";
             else
                 return false;
         }
