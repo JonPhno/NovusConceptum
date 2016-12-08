@@ -40,6 +40,10 @@ namespace NovusConceptum.Controllers
         public ActionResult Details(int id)
         {
             TournoisViewModel tournoisvm = new TournoisViewModel(_context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id));
+            foreach (AspNetUsersTournois jou in tournoisvm.Joueurs)
+            {
+                jou.User = _context.Users.SingleOrDefault(u=> u.Id == jou.UserId);
+            }
             return View(tournoisvm);
         }
         [Authorize(Roles = "Administrateur,Modérateur,Utilisateur,Ange")]
@@ -142,9 +146,15 @@ namespace NovusConceptum.Controllers
         public ActionResult Register(int id)
         {
             Tournois tournois = _context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id);
-            if (!tournois.Joueurs.Any(u=>u.UserName == User.Identity.Name) && DateTime.Now < tournois.FinInscriptions)
+            ApplicationUser user = _context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name);
+            if (!tournois.Joueurs.Any(u=>u.UserId == user.Id) && DateTime.Now < tournois.FinInscriptions)
             {
-                tournois.Joueurs.Add(_context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name));
+                AspNetUsersTournois UserTournois = new AspNetUsersTournois()
+                {
+                    User = user,
+                    Tournois = tournois
+                };
+                tournois.Joueurs.Add(UserTournois);
                 _context.Entry(tournois).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
             }
@@ -157,9 +167,12 @@ namespace NovusConceptum.Controllers
         public ActionResult Deregister(int id)
         {
             Tournois tournois = _context.Tournois.Include(t => t.Joueurs).SingleOrDefault(t => t.ID == id);
-            if (tournois.Joueurs.Any(u => u.UserName == User.Identity.Name) && DateTime.Now < tournois.FinInscriptions)
+            ApplicationUser user = _context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name);
+
+            if (tournois.Joueurs.Any(u => u.UserId == user.Id) && DateTime.Now < tournois.FinInscriptions)
             {
-                tournois.Joueurs.Remove(_context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name));
+                AspNetUsersTournois UserTournois = tournois.Joueurs.SingleOrDefault(j=> j.UserId == user.Id && tournois.ID == j.TournoisId);
+                tournois.Joueurs.Remove(UserTournois);
                 _context.Entry(tournois).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
             }

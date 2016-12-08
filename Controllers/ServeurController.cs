@@ -147,7 +147,7 @@ namespace NovusConceptum.Controllers
         [Authorize(Roles = "Administrateur,Modérateur")]
         public IActionResult SaveVm(int id)
         {
-            string batchFileLocation = @"Batch\\controlvm.bat";
+            string batchFileLocation = @"W:\\Sites\\NovusConceptum\\Batch\\ControlVm.bat";
             Process p = new Process();
             string NomVm = _context.Serveurs.SingleOrDefault(se => se.ID == id).Nom;
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "savestate");

@@ -16,7 +16,7 @@ namespace NovusConceptum.Models.TournoisViewModels
         public DateTime Date { get; set; }
         public int NombreEquipe { get; set; }
         public int NombreJoueursEquipe { get; set; }
-        public List<ApplicationUser> Joueurs { get; set; }
+        public ICollection<AspNetUsersTournois> Joueurs { get; set; }
         public int PlacesRestantes { get; set; }
 
         public TournoisViewModel()

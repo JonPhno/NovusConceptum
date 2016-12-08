@@ -16,6 +16,8 @@ namespace NovusConceptum.Data
         public DbSet<AspNetUserInfoSup> AspNetUserInfoSup { get; set; }
         public DbSet<Tournois> Tournois { get; set; }
         public DbSet<Sondage> Sondages { get; set; }
+        public DbSet<AspNetUsersTournois> AspNetUsersTournois { get; set; }
+        public DbSet<AspNetUsersSondages> AspNetUsersSondages { get; set; }
         public DbSet<Serveur> Serveurs { get; set; }
         public Image Image { get; set; }
 

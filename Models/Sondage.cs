@@ -12,7 +12,7 @@ namespace NovusConceptum.Models
         public string Description { get; set; }
         public string Options { get; set; }
         public string Choix { get; set; }
-        public List<ApplicationUser> Utilisateurs { get; set; }
+        public virtual ICollection<AspNetUsersSondages> Utilisateurs { get; set; }
         public DateTime Date { get; set; }
         public DateTime DateFin { get; set; }
     }

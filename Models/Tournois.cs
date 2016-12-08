@@ -16,6 +16,6 @@ namespace NovusConceptum.Models
         public DateTime Date { get; set; }
         public int NombreEquipe { get; set; }
         public int NombreJoueursEquipe { get; set; }
-        public List<ApplicationUser> Joueurs { get; set; }
+        public virtual ICollection<AspNetUsersTournois> Joueurs { get; set; }
     }
 }

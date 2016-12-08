@@ -13,7 +13,7 @@ namespace NovusConceptum.Models.SondageViewModel
         public List<string> Options { get; set; }
         public string OptionsString { get; set; }
         public List<int> Choix { get; set; }
-        public List<ApplicationUser> Utilisateurs { get; set; }
+        public ICollection<AspNetUsersSondages> Utilisateurs { get; set; }
         public DateTime Date { get; set; }
         public DateTime DateFin { get; set; }
 

@@ -56,7 +56,7 @@
     </dl>
 </div>
 <div>
-    @if (Model.Utilisateurs.Any(u => u.UserName == User.Identity.Name))
+    @if (Model.Utilisateurs.Any(u => u.User.UserName == User.Identity.Name))
     {
         <a asp-action="Results\@Model.ID">@SharedLocalizer["Results"]</a>
     }

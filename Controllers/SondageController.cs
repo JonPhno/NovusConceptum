@@ -38,6 +38,10 @@ namespace NovusConceptum.Controllers
         public ActionResult Details(int id)
         {
             SondageViewModel s = new SondageViewModel(_context.Sondages.Include(u => u.Utilisateurs).SingleOrDefault(so => so.ID == id));
+            foreach (AspNetUsersSondages use in s.Utilisateurs)
+            {
+                use.User = _context.Users.SingleOrDefault(u => u.Id == use.UserId);
+            }
             return View(s);
         }
 
@@ -157,8 +161,8 @@ namespace NovusConceptum.Controllers
             try
             {
                 Sondage sondage = _context.Sondages.Include(s => s.Utilisateurs).SingleOrDefault(so => so.ID == id);
-
-                if (!sondage.Utilisateurs.Any(u => u.UserName == User.Identity.Name) && sondage.DateFin > DateTime.Now)
+                ApplicationUser user = _context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name);
+                if (!sondage.Utilisateurs.Any(u => u.UserId== user.Id) && sondage.DateFin > DateTime.Now)
                 {
 
                     string[] options = sondage.Options.Split(',');
@@ -177,7 +181,12 @@ namespace NovusConceptum.Controllers
                     choixVote += "," + choix[i];
                 }
                 sondage.Choix = choixVote;
-                sondage.Utilisateurs.Add(_context.Users.SingleOrDefault(u => u.UserName == User.Identity.Name));
+                    AspNetUsersSondages UserSondage = new AspNetUsersSondages()
+                    {
+                        User = user,
+                        Sondage = sondage
+                    };
+                sondage.Utilisateurs.Add(UserSondage);
                 _context.Entry(sondage).State = EntityState.Modified;
                 _context.SaveChanges();
                 }

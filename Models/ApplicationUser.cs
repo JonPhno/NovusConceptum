@@ -10,7 +10,8 @@ namespace NovusConceptum.Models
     public class ApplicationUser : IdentityUser
     {
         public AspNetUserInfoSup InfoSup { get; set; }
-        
+        public virtual ICollection<Sondage> Sondages { get; set; }
+        public virtual ICollection<Tournois> Tournois { get; set; }
 
     }
 }

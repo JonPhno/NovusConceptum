@@ -78,18 +78,18 @@
         <dd>
             @foreach (var item in Model.Joueurs)
             {
-               @item.UserName;<br />
+               @item.User.UserName;<br />
             }
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit\@Model.ID">@SharedLocalizer["Edit"]</a> | 
-    @if (Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
+    @if (Model.Joueurs.Any(u => u.User.UserName == User.Identity.Name))
     {
         <a asp-action="Deregister\@Model.ID">@SharedLocalizer["Deregister"]</a>
     }
-    @if (!Model.Joueurs.Any(u => u.UserName == User.Identity.Name))
+    @if (!Model.Joueurs.Any(u => u.User.UserName == User.Identity.Name))
     {
         <a asp-action="Register\@Model.ID">@SharedLocalizer["Register"]</a>
     }
