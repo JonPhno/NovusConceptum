@@ -1,4 +1,4 @@
-@model IPagedList< NovusConceptum.Models.MembresViewModels.MembresViewModel>
+@model IPagedList<NovusConceptum.Models.MembresViewModels.MembresViewModel>
 @using Sakura.AspNetCore
 @addTagHelper *, Sakura.AspNetCore.Mvc.PagedList
 
@@ -8,13 +8,7 @@
 
 }
 
-@section scripts {
-    <environment names="Development">
-        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
-    </environment> }
+
 
 <h2>Membres</h2>
 
@@ -24,15 +18,17 @@
 
 <div class="row">
     <form class="form-inline" asp-action="Index" data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update=".Membres">
-        <div class="col-md-6">
+        <div class="col-md-4">
             Tri:
-            <select name="ordretri" asp-items="@liste_ordre" class="form-control"></select>
-            <input type="submit" value="Trier" class="btn btn-default btn-primary" />
+            <select id="ordretri" name="ordretri" asp-items="@liste_ordre" class="form-control"></select>
+            @*<input type="submit" value="Trier" class="btn btn-default btn-primary" />*@
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-4 text-center">
+            <button value="Rechercher" id="btnRechercher" class="btn btn-default btn-primary">Rechercher</button>
+        </div>
+        <div class="col-md-4 text-right">
             Rechercher:
-            <input type="text" name="motrecherche" class="form-control">
-            <input type="submit" value="Rechercher" class="btn btn-default btn-primary" />
+            <input type="text" id="motrecherche" name="motrecherche" class="form-control">
 
         </div>
     </form>
@@ -40,3 +36,33 @@
 
 @Html.Partial("_IndexListeMembresPartial", Model)
 
+@section Scripts{
+    <environment names="Development">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    </environment>
+
+    <script>
+        $("btnRechercher")
+        .on("click",
+        function () {
+            var e = document.getElementById("ordretri");
+            var strUser = e.options[e.selectedIndex].value;
+            var strRech = document.getElementById("motrecherche");
+            $.ajax({
+                url: "/MembresController",
+                type: "GET",
+                cache: false,
+                data: { ordretri: strUser, motrecherche: strRech },
+                dataType: "html",
+                success: function (data) {
+                    document.getElementById("divMembres").innerHTML = data;
+                }
+            })
+
+        });
+
+    </script>
+}
