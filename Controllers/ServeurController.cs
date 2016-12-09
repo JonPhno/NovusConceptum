@@ -147,7 +147,7 @@ namespace NovusConceptum.Controllers
         [Authorize(Roles = "Administrateur,Modérateur")]
         public IActionResult SaveVm(int id)
         {
-            string batchFileLocation = @"W:\\Sites\\NovusConceptum\\Batch\\ControlVm.bat";
+            string batchFileLocation = @"Batch\\ControlVm.bat";
             Process p = new Process();
             string NomVm = _context.Serveurs.SingleOrDefault(se => se.ID == id).Nom;
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "savestate");
@@ -190,8 +190,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "reset");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -209,8 +209,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "resume");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -228,8 +228,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "acpipowerbutton");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();

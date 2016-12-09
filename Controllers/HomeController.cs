@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization;
 using NovusConceptum.Data;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NovusConceptum.Controllers
 {
@@ -66,5 +67,13 @@ namespace NovusConceptum.Controllers
             );
             return LocalRedirect(returnUrl);
         }
+
+        [Authorize(Roles ="Administrateur")]
+        public IActionResult Game()
+        {
+            return View();
+        }
+
+
     }
 }

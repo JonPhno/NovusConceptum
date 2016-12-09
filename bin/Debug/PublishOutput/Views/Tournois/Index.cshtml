@@ -1,5 +1,6 @@
 @model IEnumerable<NovusConceptum.Models.TournoisViewModels.TournoisViewModel>
 @using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @inject IHtmlLocalizer<SharedResource> SharedLocalizer
 
 @{
@@ -48,44 +49,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Jeu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serveur)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Spectateurs)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinInscriptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreJoueursEquipe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlacesRestantes)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.ID}) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID})
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.ActionLink(item.Nom, "Details", new { id = item.ID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jeu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serveur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Spectateurs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinInscriptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreEquipe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreJoueursEquipe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlacesRestantes)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrateur") ||
+                        User.IsInRole("Modérateur"))
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) @:|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

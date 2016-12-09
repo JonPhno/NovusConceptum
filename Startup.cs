@@ -69,7 +69,7 @@ namespace NovusConceptum
             services.Configure<CookieAuthenticationOptions>(options =>
             {
                 options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("Account/AccessDenied");
-                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Account/AccessDenied");
+                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Home/Index");
             });
              
 
