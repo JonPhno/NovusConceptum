@@ -135,8 +135,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm);
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -153,8 +153,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "savestate");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -171,8 +171,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "poweroff");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -190,8 +190,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "reset");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -209,8 +209,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "resume");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -228,8 +228,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "acpipowerbutton");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "Administrateur";
-            p.StartInfo.PasswordInClearText = "Inc0rrect";
+            p.StartInfo.UserName = "";
+            p.StartInfo.PasswordInClearText = "";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
