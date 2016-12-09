@@ -66,6 +66,12 @@ namespace NovusConceptum
              .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
              .AddDataAnnotationsLocalization();
 
+            services.Configure<CookieAuthenticationOptions>(options =>
+            {
+                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("Account/AccessDenied");
+                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Account/AccessDenied");
+            });
+             
 
             services.Configure<RequestLocalizationOptions>(
                  options =>

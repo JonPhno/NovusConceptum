@@ -32,28 +32,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.ActionLink(item.Nom, "Details", new { id = item.ID }) 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateFin)
-            </td>
-            <td>
-                <a asp-action="Edit\@item.ID">@SharedLocalizer["Edit"]</a> |
-                <a asp-action="Delete\@item.ID">@SharedLocalizer["Delete"]</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.ActionLink(item.Nom, "Details", new { id = item.ID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateFin)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrateur") ||
+                    User.IsInRole("Modérateur"))
+                    {
+                        <a asp-action="Edit\@item.ID">@SharedLocalizer["Edit"]</a> @:|
+                        <a asp-action="Delete\@item.ID">@SharedLocalizer["Delete"]</a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

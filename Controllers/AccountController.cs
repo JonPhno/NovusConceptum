@@ -494,6 +494,11 @@ namespace NovusConceptum.Controllers
             }
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
         #endregion
     }
 }

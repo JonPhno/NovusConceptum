@@ -141,6 +141,9 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Bro, you don't have the rights to do this</value>
+  </data>
   <data name="Deregister" xml:space="preserve">
     <value>Deregister</value>
   </data>
