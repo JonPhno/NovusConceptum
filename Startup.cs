@@ -135,9 +135,9 @@ namespace NovusConceptum
 
             SeedData.Context = app.ApplicationServices.GetService<ApplicationDbContext>();
             SeedData.Context.Database.Migrate();
-            SeedData.AjouterUsagers();
-            SeedData.AjouterRoles();
-            SeedData.AssocierRolesUsagers();
+           // SeedData.AjouterUsagers();
+           // SeedData.AjouterRoles();
+           // SeedData.AssocierRolesUsagers();
 
 
         }

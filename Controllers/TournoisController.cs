@@ -158,7 +158,6 @@ namespace NovusConceptum.Controllers
                 _context.Entry(tournois).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
             }
-           // TournoisViewModel tournoisvm = new TournoisViewModel(tournois);
             return RedirectToAction("Details", new { id = tournois.ID });
         }
 
@@ -176,7 +175,6 @@ namespace NovusConceptum.Controllers
                 _context.Entry(tournois).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
             }
-            // TournoisViewModel tournoisvm = new TournoisViewModel(tournois);
             return RedirectToAction("Details", new { id = tournois.ID });
         }
     }

@@ -237,7 +237,6 @@ namespace NovusConceptum.Controllers
                 post.Date = DateTime.Now;
                 Sujet sujet = _context.Sujets.SingleOrDefault(s=> s.ID == post.SujetID);
                 sujet.DateModifier = DateTime.Now;
-                //post.SujetID = sujet.ID;
                 post.Auteur =_context.Users.SingleOrDefault(u=> User.Identity.Name== u.UserName);
                 sujet.NombreMessages++;
                 post.Date = DateTime.Now;
@@ -251,7 +250,6 @@ namespace NovusConceptum.Controllers
             catch
             {
                 return View();
-                //asdklnjasdnjasdnjasdlnasklnjdaklnsdaklnsdalnsdklns
             }
         }
     }
