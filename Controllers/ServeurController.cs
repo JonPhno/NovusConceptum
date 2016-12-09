@@ -135,8 +135,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm);
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -147,14 +147,14 @@ namespace NovusConceptum.Controllers
         [Authorize(Roles = "Administrateur,Modérateur")]
         public IActionResult SaveVm(int id)
         {
-            string batchFileLocation = @"Batch\\ControlVm.bat";
+            string batchFileLocation = @"W:\\Sites\\NovusConceptum\\Batch\\ControlVm.bat";
             Process p = new Process();
             string NomVm = _context.Serveurs.SingleOrDefault(se => se.ID == id).Nom;
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "savestate");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();
@@ -171,8 +171,8 @@ namespace NovusConceptum.Controllers
             var startinfo = new ProcessStartInfo(batchFileLocation, NomVm + " " + "poweroff");
             p.StartInfo = startinfo;
             p.StartInfo.UseShellExecute = false;
-            p.StartInfo.UserName = "";
-            p.StartInfo.PasswordInClearText = "";
+            p.StartInfo.UserName = "Administrateur";
+            p.StartInfo.PasswordInClearText = "Inc0rrect";
             startinfo.RedirectStandardOutput = true;
             startinfo.UseShellExecute = false;
             p.Start();

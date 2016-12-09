@@ -68,7 +68,7 @@ namespace NovusConceptum.Controllers
             return LocalRedirect(returnUrl);
         }
 
-        [Authorize(Roles ="Administrateur")]
+        [Authorize(Roles ="Administrateurs")]
         public IActionResult Game()
         {
             return View();
